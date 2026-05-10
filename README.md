@@ -1,6 +1,6 @@
 # Skills
 
-A curated collection of skills for AI-assisted development. These work across Claude Code, GitHub Copilot, Cursor, and OpenAI Codex.
+A curated collection of skills for AI-assisted development.
 
 ## Skills
 
