@@ -7,4 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- skills index with links and descriptions for commit, changelog, and taste
+
 [Unreleased]: https://github.com/pavelsimo/skills/commits/HEAD
