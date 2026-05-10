@@ -9,6 +9,7 @@ A curated collection of skills for AI-assisted development. These work across Cl
 | [commit](https://github.com/pavelsimo/commit) | Generate conventional git commits with gitmoji prefix and lowercase message style |
 | [changelog](https://github.com/pavelsimo/changelog) | Generate changelog entries from git history following Keep a Changelog conventions and manage versioned releases |
 | [taste](https://github.com/pavelsimo/taste) | Analyze repositories to extract shared engineering conventions, style guidelines, and anti-patterns |
+| [mermaid](https://github.com/pavelsimo/mermaid) | Generate Mermaid diagrams from source files, schemas, or plain-text descriptions with automatic or manual diagram type selection |
 
 ---
 
@@ -51,4 +52,17 @@ Clones one or more repositories, samples key files, and synthesizes a `TASTE.md`
 /taste owner/repo1 owner/repo2
 /taste --html --slides --output ~/reports owner/repo1
 /taste ~/Projects/my-tool https://github.com/some/repo
+```
+
+---
+
+### [mermaid](https://github.com/pavelsimo/mermaid)
+
+Analyzes source code, schemas, or plain-text descriptions and generates valid Mermaid diagram syntax. Supports flowcharts, sequence diagrams, ER diagrams, class diagrams, state diagrams, Gantt charts, pie charts, and mindmaps.
+
+```
+/mermaid                    # auto-detect from context
+/mermaid <description>      # target a specific area
+/mermaid --type=<type>      # force a diagram type
+/mermaid --output=<file>    # save diagram to file
 ```
