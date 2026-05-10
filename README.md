@@ -10,6 +10,7 @@ A curated collection of skills for AI-assisted development.
 | [changelog](https://github.com/pavelsimo/changelog) | Generate changelog entries from git history following Keep a Changelog conventions and manage versioned releases |
 | [taste](https://github.com/pavelsimo/taste) | Analyze repositories to extract shared engineering conventions, style guidelines, and anti-patterns |
 | [mermaid](https://github.com/pavelsimo/mermaid) | Generate Mermaid diagrams from source files, schemas, or plain-text descriptions with automatic or manual diagram type selection |
+| [ytd](https://github.com/pavelsimo/ytd) | Download YouTube videos, audio, or transcripts from the command line with quality and language controls |
 
 ---
 
@@ -65,4 +66,22 @@ Analyzes source code, schemas, or plain-text descriptions and generates valid Me
 /mermaid <description>      # target a specific area
 /mermaid --type=<type>      # force a diagram type
 /mermaid --output=<file>    # save diagram to file
+```
+
+---
+
+### [ytd](https://github.com/pavelsimo/ytd)
+
+Downloads YouTube videos, audio, or transcripts using `yt-dlp`. Supports quality caps, language selection, and subtitle extraction with no manual dependency setup required.
+
+```
+/ytd <url>                  # download best quality video
+/ytd <url> --audio          # extract audio as MP3
+/ytd <url> --transcript     # print clean transcript to stdout
+/ytd <url> --formats        # list available formats
+/ytd <url> --quality 1080   # cap resolution (1080, 720, 480)
+/ytd <url> --lang CODE      # choose transcript/subtitle language
+/ytd <url> --output DIR     # save to a specific directory
+/ytd <url> --timestamps     # prefix transcript lines with [HH:MM:SS]
+/ytd <url> --subs           # save subtitle files alongside video
 ```
