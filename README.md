@@ -8,10 +8,10 @@ A curated collection of skills for AI-assisted development.
 |---|---|
 | [commit](https://github.com/pavelsimo/commit) | Generate conventional git commits with gitmoji prefix and lowercase message style |
 | [changelog](https://github.com/pavelsimo/changelog) | Generate changelog entries from git history following Keep a Changelog conventions and manage versioned releases |
-| [taste](https://github.com/pavelsimo/taste) | Analyze repositories to extract shared engineering conventions, style guidelines, and anti-patterns |
-| [mermaid](https://github.com/pavelsimo/mermaid) | Generate Mermaid diagrams from source files, schemas, or plain-text descriptions with automatic or manual diagram type selection |
-| [ytd](https://github.com/pavelsimo/ytd) | Download YouTube videos, audio, or transcripts from the command line with quality and language controls |
 | [release](https://github.com/pavelsimo/release) | Cut a full versioned release in one step: updates `CHANGELOG.md`, commits it, creates an annotated git tag, and pushes everything to remote |
+| [mermaid](https://github.com/pavelsimo/mermaid) | Generate Mermaid diagrams from source files, schemas, or plain-text descriptions with automatic or manual diagram type selection |
+| [taste](https://github.com/pavelsimo/taste) | Analyze repositories to extract shared engineering conventions, style guidelines, and anti-patterns |
+| [ytd](https://github.com/pavelsimo/ytd) | Download YouTube videos, audio, or transcripts from the command line with quality and language controls |
 
 ---
 
@@ -46,15 +46,17 @@ Reads git history and translates commits into user-friendly changelog entries or
 
 ---
 
-### [taste](https://github.com/pavelsimo/taste)
+### [release](https://github.com/pavelsimo/release)
 
-Clones one or more repositories, samples key files, and synthesizes a `TASTE.md` report covering patterns, tooling, testing conventions, and anti-patterns to avoid.
+Cuts a full versioned release in one step: promotes the `[Unreleased]` section in `CHANGELOG.md` to a dated release, commits it, creates an annotated git tag, and pushes the branch and tag to `origin`. Shows a numbered plan and waits for confirmation before touching anything.
 
 ```
-/taste owner/repo1 owner/repo2
-/taste --html --slides --output ~/reports owner/repo1
-/taste ~/Projects/my-tool https://github.com/some/repo
+/release 1.2.0        # normalize and tag as v1.2.0
+/release v1.2.0       # explicit v prefix, same result
+/release 2.0.0-rc.1   # pre-release versions supported
 ```
+
+Requires the `/changelog` and `/commit` skills to be installed alongside it.
 
 ---
 
@@ -67,6 +69,18 @@ Analyzes source code, schemas, or plain-text descriptions and generates valid Me
 /mermaid <description>      # target a specific area
 /mermaid --type=<type>      # force a diagram type
 /mermaid --output=<file>    # save diagram to file
+```
+
+---
+
+### [taste](https://github.com/pavelsimo/taste)
+
+Clones one or more repositories, samples key files, and synthesizes a `TASTE.md` report covering patterns, tooling, testing conventions, and anti-patterns to avoid.
+
+```
+/taste owner/repo1 owner/repo2
+/taste --html --slides --output ~/reports owner/repo1
+/taste ~/Projects/my-tool https://github.com/some/repo
 ```
 
 ---
@@ -86,17 +100,3 @@ Downloads YouTube videos, audio, or transcripts using `yt-dlp`. Supports quality
 /ytd <url> --timestamps     # prefix transcript lines with [HH:MM:SS]
 /ytd <url> --subs           # save subtitle files alongside video
 ```
-
----
-
-### [release](https://github.com/pavelsimo/release)
-
-Cuts a full versioned release in one step: promotes the `[Unreleased]` section in `CHANGELOG.md` to a dated release, commits it, creates an annotated git tag, and pushes the branch and tag to `origin`. Shows a numbered plan and waits for confirmation before touching anything.
-
-```
-/release 1.2.0        # normalize and tag as v1.2.0
-/release v1.2.0       # explicit v prefix, same result
-/release 2.0.0-rc.1   # pre-release versions supported
-```
-
-Requires the `/changelog` and `/commit` skills to be installed alongside it.

@@ -12,4 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - add mermaid skill to the skills index
 - add ytd skill to the skills index
 
+### Changed
+- sort skills index with release listed after commit and changelog
+
 [Unreleased]: https://github.com/pavelsimo/skills/commits/HEAD
