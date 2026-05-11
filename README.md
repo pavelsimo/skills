@@ -11,6 +11,7 @@ A curated collection of skills for AI-assisted development.
 | [taste](https://github.com/pavelsimo/taste) | Analyze repositories to extract shared engineering conventions, style guidelines, and anti-patterns |
 | [mermaid](https://github.com/pavelsimo/mermaid) | Generate Mermaid diagrams from source files, schemas, or plain-text descriptions with automatic or manual diagram type selection |
 | [ytd](https://github.com/pavelsimo/ytd) | Download YouTube videos, audio, or transcripts from the command line with quality and language controls |
+| [release](https://github.com/pavelsimo/release) | Cut a full versioned release in one step: updates `CHANGELOG.md`, commits it, creates an annotated git tag, and pushes everything to remote |
 
 ---
 
@@ -72,7 +73,7 @@ Analyzes source code, schemas, or plain-text descriptions and generates valid Me
 
 ### [ytd](https://github.com/pavelsimo/ytd)
 
-Downloads YouTube videos, audio, or transcripts using `yt-dlp`. Supports quality caps, language selection, and subtitle extraction with no manual dependency setup required.
+Downloads YouTube videos, audio, or transcripts using `yt-dlp`. Supports quality caps, language selection, and subtitle extraction.
 
 ```
 /ytd <url>                  # download best quality video
@@ -85,3 +86,17 @@ Downloads YouTube videos, audio, or transcripts using `yt-dlp`. Supports quality
 /ytd <url> --timestamps     # prefix transcript lines with [HH:MM:SS]
 /ytd <url> --subs           # save subtitle files alongside video
 ```
+
+---
+
+### [release](https://github.com/pavelsimo/release)
+
+Cuts a full versioned release in one step: promotes the `[Unreleased]` section in `CHANGELOG.md` to a dated release, commits it, creates an annotated git tag, and pushes the branch and tag to `origin`. Shows a numbered plan and waits for confirmation before touching anything.
+
+```
+/release 1.2.0        # normalize and tag as v1.2.0
+/release v1.2.0       # explicit v prefix, same result
+/release 2.0.0-rc.1   # pre-release versions supported
+```
+
+Requires the `/changelog` and `/commit` skills to be installed alongside it.
