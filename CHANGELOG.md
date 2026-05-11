@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - skills index with links and descriptions for commit, changelog, and taste
 - add mermaid skill to the skills index
 - add ytd skill to the skills index
+- link skill repositories as Git submodules
+- document cloning the full skills collection with submodules
 
 ### Changed
 - sort skills index with release listed after commit and changelog
