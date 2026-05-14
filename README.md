@@ -35,6 +35,7 @@ git submodule update --remote --merge
 | [review](https://github.com/pavelsimo/review) | Perform deep, evidence-first code review on local diffs, staged changes, branch comparisons, or GitHub PRs and issues |
 | [humanize](https://github.com/pavelsimo/humanize) | Remove AI writing patterns and make text sound natural and human |
 | [ytd](https://github.com/pavelsimo/ytd) | Download YouTube videos, audio, or transcripts from the command line with quality and language controls |
+| [create-skill](https://github.com/pavelsimo/create-skill) | Bootstrap a new agent skill with files, GitHub repo, and skills index registration |
 
 ---
 
@@ -175,4 +176,16 @@ Downloads YouTube videos, audio, or transcripts using `yt-dlp`. Supports quality
 /ytd <url> --output DIR     # save to a specific directory
 /ytd <url> --timestamps     # prefix transcript lines with [HH:MM:SS]
 /ytd <url> --subs           # save subtitle files alongside video
+```
+
+---
+
+### [create-skill](https://github.com/pavelsimo/create-skill)
+
+Scaffolds a new agent skill from a plain-text description. Generates SKILL.md, README.md, and LICENSE; initializes a git repo; creates a public GitHub repo via `gh`; and registers the skill as a submodule in pavelsimo/skills with a README entry — all in one shot.
+
+```
+/create-skill                    # prompt for name and description
+/create-skill <name>             # prompt for description only
+/create-skill --no-index         # skip registering in the skills index
 ```

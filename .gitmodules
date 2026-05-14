@@ -36,3 +36,6 @@
 [submodule "create-cli"]
 	path = create-cli
 	url = https://github.com/pavelsimo/create-cli
+[submodule "create-skill"]
+	path = create-skill
+	url = https://github.com/pavelsimo/create-skill.git
