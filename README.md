@@ -35,7 +35,7 @@ git submodule update --remote --merge
 
 ---
 
-### [commit](commit/)
+### [commit](https://github.com/pavelsimo/commit)
 
 Analyzes staged changes and produces clean, atomic commits with gitmoji symbols and a lowercase imperative message.
 
@@ -53,7 +53,7 @@ Examples:
 
 ---
 
-### [changelog](changelog/)
+### [changelog](https://github.com/pavelsimo/changelog)
 
 Reads git history and translates commits into user-friendly changelog entries organized by type (Added, Changed, Fixed, etc.) with semantic versioning support.
 
@@ -66,7 +66,7 @@ Reads git history and translates commits into user-friendly changelog entries or
 
 ---
 
-### [release](release/)
+### [release](https://github.com/pavelsimo/release)
 
 Cuts a full versioned release in one step: promotes the `[Unreleased]` section in `CHANGELOG.md` to a dated release, commits it, creates an annotated git tag, and pushes the branch and tag to `origin`. Shows a numbered plan and waits for confirmation before touching anything.
 
@@ -80,7 +80,7 @@ Requires the `/changelog` and `/commit` skills to be installed alongside it.
 
 ---
 
-### [mermaid](mermaid/)
+### [mermaid](https://github.com/pavelsimo/mermaid)
 
 Analyzes source code, schemas, or plain-text descriptions and generates valid Mermaid diagram syntax. Supports flowcharts, sequence diagrams, ER diagrams, class diagrams, state diagrams, Gantt charts, pie charts, and mindmaps.
 
@@ -93,7 +93,7 @@ Analyzes source code, schemas, or plain-text descriptions and generates valid Me
 
 ---
 
-### [taste](taste/)
+### [taste](https://github.com/pavelsimo/taste)
 
 Clones one or more repositories, samples key files, and synthesizes a `TASTE.md` report covering patterns, tooling, testing conventions, and anti-patterns to avoid.
 
@@ -105,7 +105,7 @@ Clones one or more repositories, samples key files, and synthesizes a `TASTE.md`
 
 ---
 
-### [review](review/)
+### [review](https://github.com/pavelsimo/review)
 
 Performs a deep, evidence-first code review on local working-tree changes, staged diffs, branch comparisons, or GitHub PRs and issues. Read-only by default with structured, severity-annotated output.
 
@@ -121,7 +121,7 @@ Performs a deep, evidence-first code review on local working-tree changes, stage
 
 ---
 
-### [ytd](ytd/)
+### [ytd](https://github.com/pavelsimo/ytd)
 
 Downloads YouTube videos, audio, or transcripts using `yt-dlp`. Supports quality caps, language selection, and subtitle extraction.
 
