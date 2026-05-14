@@ -29,3 +29,7 @@
 	path = markdown
 	url = https://github.com/pavelsimo/markdown.git
 	branch = master
+[submodule "humanize"]
+	path = humanize
+	url = https://github.com/pavelsimo/humanize.git
+	branch = main

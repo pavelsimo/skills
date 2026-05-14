@@ -32,6 +32,7 @@ git submodule update --remote --merge
 | [release](https://github.com/pavelsimo/release) | Cut a full versioned release in one step: updates `CHANGELOG.md`, commits it, creates an annotated git tag, and pushes everything to remote |
 | [taste](https://github.com/pavelsimo/taste) | Analyze repositories to extract shared engineering conventions, style guidelines, and anti-patterns |
 | [review](https://github.com/pavelsimo/review) | Perform deep, evidence-first code review on local diffs, staged changes, branch comparisons, or GitHub PRs and issues |
+| [humanize](https://github.com/pavelsimo/humanize) | Remove AI writing patterns and make text sound natural and human |
 | [ytd](https://github.com/pavelsimo/ytd) | Download YouTube videos, audio, or transcripts from the command line with quality and language controls |
 
 ---
@@ -133,6 +134,19 @@ Performs a deep, evidence-first code review on local working-tree changes, stage
 /review issue <number>           # GitHub issue review (read-only)
 /review pr <number> --post       # post review comment to GitHub (explicit only)
 ```
+
+---
+
+### [humanize](https://github.com/pavelsimo/humanize)
+
+Identifies and removes 29 AI writing patterns — significance inflation, promotional language, AI vocabulary, em dash clusters, chatbot sign-offs, filler phrases, and more. Includes optional voice calibration from a writing sample and a two-pass rewriting process (draft + anti-AI audit).
+
+```
+/humanize                          # humanize text in the current context
+/humanize --sample <file>          # match voice from a writing sample file
+```
+
+Based on [blader/humanizer](https://github.com/blader/humanizer) by [@blader](https://github.com/blader).
 
 ---
 
