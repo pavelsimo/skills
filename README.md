@@ -1,6 +1,6 @@
 # Skills
 
-A curated collection of skills for AI-assisted development.
+A collection of agent skills for AI-assisted development.
 
 This repository links each skill as a Git submodule, so the full collection can
 be cloned into one folder while each skill keeps its own repository history.
