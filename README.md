@@ -36,6 +36,7 @@ git submodule update --remote --merge
 | [humanize](https://github.com/pavelsimo/humanize) | Remove AI writing patterns and make text sound natural and human |
 | [ytd](https://github.com/pavelsimo/ytd) | Download YouTube videos, audio, or transcripts from the command line with quality and language controls |
 | [create-skill](https://github.com/pavelsimo/create-skill) | Bootstrap a new agent skill with files, GitHub repo, and skills index registration |
+| [create-docs](https://github.com/pavelsimo/create-docs) | Analyze a codebase and generate or refresh LLM-optimized documentation in docs/ or a custom directory |
 
 ---
 
@@ -188,4 +189,18 @@ Scaffolds a new agent skill from a plain-text description. Generates SKILL.md, R
 /create-skill                    # prompt for name and description
 /create-skill <name>             # prompt for description only
 /create-skill --no-index         # skip registering in the skills index
+```
+
+---
+
+### [create-docs](https://github.com/pavelsimo/create-docs)
+
+Systematically analyzes a project and generates or refreshes seven LLM-optimized documentation files (project overview, architecture, build, testing, development, deployment, files catalog) plus a synthesized README. Every file gets a UTC timestamp header and concrete file references. Existing files are refreshed by default; `--no-overwrite` skips them.
+
+```
+/create-docs                            # analyze project and write to docs/
+/create-docs --output <path>            # write to a custom directory
+/create-docs --no-overwrite             # skip files that already exist
+/create-docs --only <section>           # refresh one section only
+/create-docs --dry-run                  # preview without writing files
 ```

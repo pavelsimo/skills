@@ -39,3 +39,6 @@
 [submodule "create-skill"]
 	path = create-skill
 	url = https://github.com/pavelsimo/create-skill.git
+[submodule "create-docs"]
+	path = create-docs
+	url = https://github.com/pavelsimo/create-docs.git
