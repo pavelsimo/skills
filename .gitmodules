@@ -25,3 +25,7 @@
 [submodule "review"]
 	path = review
 	url = https://github.com/pavelsimo/review.git
+[submodule "markdown"]
+	path = markdown
+	url = https://github.com/pavelsimo/markdown.git
+	branch = master

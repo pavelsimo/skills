@@ -25,10 +25,11 @@ git submodule update --remote --merge
 
 | Skill | Description |
 |---|---|
-| [commit](https://github.com/pavelsimo/commit) | Generate conventional git commits with gitmoji prefix and lowercase message style |
 | [changelog](https://github.com/pavelsimo/changelog) | Generate changelog entries from git history following Keep a Changelog conventions and manage versioned releases |
-| [release](https://github.com/pavelsimo/release) | Cut a full versioned release in one step: updates `CHANGELOG.md`, commits it, creates an annotated git tag, and pushes everything to remote |
+| [commit](https://github.com/pavelsimo/commit) | Generate conventional git commits with gitmoji prefix and lowercase message style |
+| [markdown](https://github.com/pavelsimo/markdown) | Convert files and URLs to clean Markdown using markitdown via uvx — no installation required |
 | [mermaid](https://github.com/pavelsimo/mermaid) | Generate Mermaid diagrams from source files, schemas, or plain-text descriptions with automatic or manual diagram type selection |
+| [release](https://github.com/pavelsimo/release) | Cut a full versioned release in one step: updates `CHANGELOG.md`, commits it, creates an annotated git tag, and pushes everything to remote |
 | [taste](https://github.com/pavelsimo/taste) | Analyze repositories to extract shared engineering conventions, style guidelines, and anti-patterns |
 | [review](https://github.com/pavelsimo/review) | Perform deep, evidence-first code review on local diffs, staged changes, branch comparisons, or GitHub PRs and issues |
 | [ytd](https://github.com/pavelsimo/ytd) | Download YouTube videos, audio, or transcripts from the command line with quality and language controls |
@@ -50,6 +51,20 @@ Examples:
 🐛 fix parameter aliases when using query dependencies
 ♻️ simplify pydantic v2 compatibility utils
 ```
+
+---
+
+### [markdown](https://github.com/pavelsimo/markdown)
+
+Converts files and URLs to clean Markdown using [markitdown](https://github.com/microsoft/markitdown) via `uvx` — no installation required.
+
+```
+/markdown input.pdf                       # convert to stdout
+/markdown input.docx -o output.md         # save to file
+/markdown https://youtu.be/...            # convert YouTube URL
+```
+
+Supports PDF, Word, PowerPoint, Excel, HTML, CSV, JSON, XML, images, audio, ZIP archives, YouTube URLs, and EPub.
 
 ---
 
