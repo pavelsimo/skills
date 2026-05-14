@@ -25,13 +25,13 @@ git submodule update --remote --merge
 
 | Skill | Description |
 |---|---|
-| [commit](commit/) | Generate conventional git commits with gitmoji prefix and lowercase message style |
-| [changelog](changelog/) | Generate changelog entries from git history following Keep a Changelog conventions and manage versioned releases |
-| [release](release/) | Cut a full versioned release in one step: updates `CHANGELOG.md`, commits it, creates an annotated git tag, and pushes everything to remote |
-| [mermaid](mermaid/) | Generate Mermaid diagrams from source files, schemas, or plain-text descriptions with automatic or manual diagram type selection |
-| [taste](taste/) | Analyze repositories to extract shared engineering conventions, style guidelines, and anti-patterns |
-| [review](review/) | Perform deep, evidence-first code review on local diffs, staged changes, branch comparisons, or GitHub PRs and issues |
-| [ytd](ytd/) | Download YouTube videos, audio, or transcripts from the command line with quality and language controls |
+| [commit](https://github.com/pavelsimo/commit) | Generate conventional git commits with gitmoji prefix and lowercase message style |
+| [changelog](https://github.com/pavelsimo/changelog) | Generate changelog entries from git history following Keep a Changelog conventions and manage versioned releases |
+| [release](https://github.com/pavelsimo/release) | Cut a full versioned release in one step: updates `CHANGELOG.md`, commits it, creates an annotated git tag, and pushes everything to remote |
+| [mermaid](https://github.com/pavelsimo/mermaid) | Generate Mermaid diagrams from source files, schemas, or plain-text descriptions with automatic or manual diagram type selection |
+| [taste](https://github.com/pavelsimo/taste) | Analyze repositories to extract shared engineering conventions, style guidelines, and anti-patterns |
+| [review](https://github.com/pavelsimo/review) | Perform deep, evidence-first code review on local diffs, staged changes, branch comparisons, or GitHub PRs and issues |
+| [ytd](https://github.com/pavelsimo/ytd) | Download YouTube videos, audio, or transcripts from the command line with quality and language controls |
 
 ---
 
