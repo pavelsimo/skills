@@ -30,6 +30,7 @@ git submodule update --remote --merge
 | [release](release/) | Cut a full versioned release in one step: updates `CHANGELOG.md`, commits it, creates an annotated git tag, and pushes everything to remote |
 | [mermaid](mermaid/) | Generate Mermaid diagrams from source files, schemas, or plain-text descriptions with automatic or manual diagram type selection |
 | [taste](taste/) | Analyze repositories to extract shared engineering conventions, style guidelines, and anti-patterns |
+| [review](review/) | Perform deep, evidence-first code review on local diffs, staged changes, branch comparisons, or GitHub PRs and issues |
 | [ytd](ytd/) | Download YouTube videos, audio, or transcripts from the command line with quality and language controls |
 
 ---
@@ -100,6 +101,22 @@ Clones one or more repositories, samples key files, and synthesizes a `TASTE.md`
 /taste owner/repo1 owner/repo2
 /taste --html --slides --output ~/reports owner/repo1
 /taste ~/Projects/my-tool https://github.com/some/repo
+```
+
+---
+
+### [review](review/)
+
+Performs a deep, evidence-first code review on local working-tree changes, staged diffs, branch comparisons, or GitHub PRs and issues. Read-only by default with structured, severity-annotated output.
+
+```
+/review                          # all non-committed changes (staged + unstaged)
+/review --staged                 # staged changes only
+/review --unstaged               # unstaged changes only
+/review --base <branch>          # diff against a base branch
+/review pr <number>              # GitHub PR review (read-only)
+/review issue <number>           # GitHub issue review (read-only)
+/review pr <number> --post       # post review comment to GitHub (explicit only)
 ```
 
 ---

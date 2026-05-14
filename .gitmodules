@@ -22,3 +22,6 @@
 	path = ytd
 	url = https://github.com/pavelsimo/ytd.git
 	branch = main
+[submodule "review"]
+	path = review
+	url = https://github.com/pavelsimo/review.git
