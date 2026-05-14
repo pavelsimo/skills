@@ -27,6 +27,7 @@ git submodule update --remote --merge
 |---|---|
 | [changelog](https://github.com/pavelsimo/changelog) | Generate changelog entries from git history following Keep a Changelog conventions and manage versioned releases |
 | [commit](https://github.com/pavelsimo/commit) | Generate conventional git commits with gitmoji prefix and lowercase message style |
+| [create-cli](https://github.com/pavelsimo/create-cli) | Scaffold a production-ready Go CLI project: Cobra, CI/CD, linter, githooks, GitHub Pages, goreleaser + Homebrew tap |
 | [markdown](https://github.com/pavelsimo/markdown) | Convert files and URLs to clean Markdown using markitdown via uvx — no installation required |
 | [mermaid](https://github.com/pavelsimo/mermaid) | Generate Mermaid diagrams from source files, schemas, or plain-text descriptions with automatic or manual diagram type selection |
 | [release](https://github.com/pavelsimo/release) | Cut a full versioned release in one step: updates `CHANGELOG.md`, commits it, creates an annotated git tag, and pushes everything to remote |
@@ -51,6 +52,16 @@ Examples:
 ✨ add support for server sent events
 🐛 fix parameter aliases when using query dependencies
 ♻️ simplify pydantic v2 compatibility utils
+```
+
+---
+
+### [create-cli](https://github.com/pavelsimo/create-cli)
+
+Scaffolds a complete, production-ready Go CLI project from a built-in template. Generates Cobra command tree, Makefile, CI/CD workflows, golangci-lint, lefthook git hooks, a Node.js docs site for GitHub Pages, goreleaser multi-platform releases, and a Homebrew tap dispatch — all wired together from a single command.
+
+```
+/create-cli
 ```
 
 ---
