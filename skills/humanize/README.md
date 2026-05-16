@@ -42,66 +42,9 @@ The assistant reads the sample, notes your sentence length, word choice, punctua
 
 ## Installation
 
-<details>
-<summary>Claude Code</summary>
-
-Claude Code supports custom slash commands defined as markdown files under `.claude/commands/`. Dropping `SKILL.md` there registers a `/humanize` command in any Claude Code session inside that project.
-
 ```bash
-mkdir -p .claude/commands
-cp SKILL.md .claude/commands/humanize.md
+npx skills@latest add pavelsimo/humanize
 ```
-
-For a global install (available in every project):
-
-```bash
-mkdir -p ~/.claude/commands
-cp SKILL.md ~/.claude/commands/humanize.md
-```
-
-**invoke:** type `/humanize` in Claude Code (CLI, VS Code extension, or web).
-
-</details>
-
-<details>
-<summary>OpenAI Codex</summary>
-
-Codex reads `AGENTS.md` at the project root as a persistent instruction file. Reference `SKILL.md` from there so Codex follows the humanize conventions whenever you ask it to rewrite text.
-
-```bash
-cp SKILL.md SKILL.md   # keep the skill file in your repo root
-```
-
-Then add to `AGENTS.md`:
-
-```markdown
-## writing style
-when rewriting or editing text, follow the rules defined in SKILL.md exactly.
-```
-
-For a global install, append the skill to your user-level instructions:
-
-```bash
-cat SKILL.md >> ~/.codex/instructions.md
-```
-
-**invoke:** `codex "humanize this text"` or ask inside a session: `remove the AI patterns from this`.
-
-</details>
-
-<details>
-<summary>GitHub Copilot</summary>
-
-Copilot Chat picks up repository-level custom instructions from `.github/copilot-instructions.md`. Paste the skill content there so Copilot follows the same conventions.
-
-```bash
-mkdir -p .github
-cat SKILL.md >> .github/copilot-instructions.md
-```
-
-**invoke:** open Copilot Chat and say `humanize this text` or `remove the AI writing patterns from this`.
-
-</details>
 
 ## Attribution
 

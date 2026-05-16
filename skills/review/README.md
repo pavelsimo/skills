@@ -70,66 +70,9 @@ By default the skill is strictly read-only:
 
 ## Installation
 
-<details>
-<summary>Claude Code</summary>
-
-Claude Code supports custom slash commands defined as markdown files under `.claude/commands/`. Dropping `SKILL.md` there registers a `/review` command in any Claude Code session inside that project.
-
 ```bash
-mkdir -p .claude/commands
-cp SKILL.md .claude/commands/review.md
+npx skills@latest add pavelsimo/review
 ```
-
-For a global install (available in every project):
-
-```bash
-mkdir -p ~/.claude/commands
-cp SKILL.md ~/.claude/commands/review.md
-```
-
-**invoke:** type `/review` in Claude Code (CLI, VS Code extension, or web).
-
-</details>
-
-<details>
-<summary>OpenAI Codex</summary>
-
-Codex reads `AGENTS.md` at the project root as a persistent instruction file. Reference `SKILL.md` from there so Codex follows the review conventions whenever you ask it to review code.
-
-```bash
-cp SKILL.md SKILL.md   # keep the skill file in your repo root
-```
-
-Then add to `AGENTS.md`:
-
-```markdown
-## review conventions
-when reviewing code changes, follow the rules defined in SKILL.md exactly.
-```
-
-For a global install, append the skill to your user-level instructions:
-
-```bash
-cat SKILL.md >> ~/.codex/instructions.md
-```
-
-**invoke:** `codex "review my staged changes"` or ask inside a session: `review the diff against main`.
-
-</details>
-
-<details>
-<summary>GitHub Copilot</summary>
-
-Copilot Chat picks up repository-level custom instructions from `.github/copilot-instructions.md`. Paste the skill content there so Copilot follows the same conventions.
-
-```bash
-mkdir -p .github
-cat SKILL.md >> .github/copilot-instructions.md
-```
-
-**invoke:** open Copilot Chat and say `review my changes` or `review PR 42`.
-
-</details>
 
 ## Contributing
 

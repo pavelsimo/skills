@@ -44,66 +44,9 @@ the upstream fix landed in that release and covers all the edge cases we patched
 
 ## Installation
 
-<details>
-<summary>Claude Code</summary>
-
-Claude Code supports custom slash commands defined as markdown files under `.claude/commands/`. Dropping `SKILL.md` there registers a `/commit` command in any Claude Code session inside that project.
-
 ```bash
-mkdir -p .claude/commands
-cp SKILL.md .claude/commands/commit.md
+npx skills@latest add pavelsimo/commit
 ```
-
-For a global install (available in every project):
-
-```bash
-mkdir -p ~/.claude/commands
-cp SKILL.md ~/.claude/commands/commit.md
-```
-
-**invoke:** type `/commit` in Claude Code (CLI, VS Code extension, or web).
-
-</details>
-
-<details>
-<summary>OpenAI Codex</summary>
-
-Codex reads `AGENTS.md` at the project root as a persistent instruction file. Reference `SKILL.md` from there so Codex follows the commit conventions whenever you ask it to commit.
-
-```bash
-cp SKILL.md SKILL.md   # keep the skill file in your repo root
-```
-
-Then add to `AGENTS.md`:
-
-```markdown
-## commit conventions
-when creating git commits, follow the rules defined in SKILL.md exactly.
-```
-
-For a global install, append the skill to your user-level instructions:
-
-```bash
-cat SKILL.md >> ~/.codex/instructions.md
-```
-
-**invoke:** `codex "commit my staged changes"` or just ask inside a session: `commit the staged files`.
-
-</details>
-
-<details>
-<summary>GitHub Copilot</summary>
-
-Copilot Chat picks up repository-level custom instructions from `.github/copilot-instructions.md`. Paste the skill content there so Copilot follows the same conventions.
-
-```bash
-mkdir -p .github
-cat SKILL.md >> .github/copilot-instructions.md
-```
-
-**invoke:** open Copilot Chat and say `commit my staged changes` or `create a commit for these changes`.
-
-</details>
 
 ## Gitmoji Reference
 

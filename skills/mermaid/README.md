@@ -87,66 +87,9 @@ classDiagram
 
 ## Installation
 
-<details>
-<summary>Claude Code</summary>
-
-Claude Code supports custom slash commands defined as markdown files under `.claude/commands/`. Dropping `SKILL.md` there registers a `/mermaid` command in any Claude Code session inside that project.
-
 ```bash
-mkdir -p .claude/commands
-cp SKILL.md .claude/commands/mermaid.md
+npx skills@latest add pavelsimo/mermaid
 ```
-
-For a global install (available in every project):
-
-```bash
-mkdir -p ~/.claude/commands
-cp SKILL.md ~/.claude/commands/mermaid.md
-```
-
-**invoke:** type `/mermaid` in Claude Code (CLI, VS Code extension, or web).
-
-</details>
-
-<details>
-<summary>OpenAI Codex</summary>
-
-Codex reads `AGENTS.md` at the project root as a persistent instruction file. Reference `SKILL.md` from there so Codex follows the diagram conventions whenever you ask it to generate a diagram.
-
-```bash
-cp SKILL.md SKILL.md   # keep the skill file in your repo root
-```
-
-Then add to `AGENTS.md`:
-
-```markdown
-## diagram conventions
-when generating mermaid diagrams, follow the rules defined in SKILL.md exactly.
-```
-
-For a global install, append the skill to your user-level instructions:
-
-```bash
-cat SKILL.md >> ~/.codex/instructions.md
-```
-
-**invoke:** `codex "generate a mermaid diagram for the user auth flow"` or ask inside a session: `diagram the database schema`.
-
-</details>
-
-<details>
-<summary>GitHub Copilot</summary>
-
-Copilot Chat picks up repository-level custom instructions from `.github/copilot-instructions.md`. Paste the skill content there so Copilot follows the same conventions.
-
-```bash
-mkdir -p .github
-cat SKILL.md >> .github/copilot-instructions.md
-```
-
-**invoke:** open Copilot Chat and say `generate a mermaid diagram for this module` or `diagram the database schema`.
-
-</details>
 
 ## Contributing
 

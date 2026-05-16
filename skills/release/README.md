@@ -51,73 +51,9 @@ If no remote is configured, the push step is skipped and the assistant prints th
 
 ## Installation
 
-<details>
-<summary>Claude Code</summary>
-
-Claude Code supports custom slash commands defined as markdown files under `.claude/commands/`. Dropping `SKILL.md` there registers a `/release` command in any Claude Code session inside that project.
-
 ```bash
-mkdir -p .claude/commands
-cp SKILL.md .claude/commands/release.md
+npx skills@latest add pavelsimo/release
 ```
-
-For a global install (available in every project):
-
-```bash
-mkdir -p ~/.claude/commands
-cp SKILL.md ~/.claude/commands/release.md
-```
-
-This skill also requires `/changelog` and `/commit` to be installed globally:
-
-```bash
-cp path/to/changelog/SKILL.md ~/.claude/commands/changelog.md
-cp path/to/commit/SKILL.md ~/.claude/commands/commit.md
-```
-
-**invoke:** type `/release 1.2.0` in Claude Code (CLI, VS Code extension, or web).
-
-</details>
-
-<details>
-<summary>OpenAI Codex</summary>
-
-Codex reads `AGENTS.md` at the project root as a persistent instruction file. Reference `SKILL.md` from there so Codex follows the release conventions whenever you ask it to cut a release.
-
-```bash
-cp SKILL.md SKILL.md   # keep the skill file in your repo root
-```
-
-Then add to `AGENTS.md`:
-
-```markdown
-## release conventions
-when cutting a release, follow the rules defined in SKILL.md exactly.
-```
-
-For a global install, append the skill to your user-level instructions:
-
-```bash
-cat SKILL.md >> ~/.codex/instructions.md
-```
-
-**invoke:** `codex "cut release 1.2.0"` or ask inside a session: `release version 1.2.0`.
-
-</details>
-
-<details>
-<summary>GitHub Copilot</summary>
-
-Copilot Chat picks up repository-level custom instructions from `.github/copilot-instructions.md`. Paste the skill content there so Copilot follows the same conventions.
-
-```bash
-mkdir -p .github
-cat SKILL.md >> .github/copilot-instructions.md
-```
-
-**invoke:** open Copilot Chat and say `cut a release for version 1.2.0`.
-
-</details>
 
 ## Contributing
 
