@@ -10,21 +10,26 @@ npx skills@latest add pavelsimo/skills
 
 ## Skills
 
-| Skill | Description |
-|---|---|
-| [changelog](https://github.com/pavelsimo/changelog) | Generate changelog entries from git history following Keep a Changelog conventions and manage versioned releases |
-| [commit](https://github.com/pavelsimo/commit) | Generate conventional git commits with gitmoji prefix and lowercase message style |
-| [create-cli](https://github.com/pavelsimo/create-cli) | Scaffold production-ready CLI projects from language templates (go template: Cobra, CI/CD, goreleaser, GitHub Pages) |
-| [markdown](https://github.com/pavelsimo/markdown) | Convert files and URLs to clean Markdown using markitdown via uvx — no installation required |
-| [mermaid](https://github.com/pavelsimo/mermaid) | Generate Mermaid diagrams from source files, schemas, or plain-text descriptions with automatic or manual diagram type selection |
-| [release](https://github.com/pavelsimo/release) | Cut a full versioned release in one step: updates `CHANGELOG.md`, commits it, creates an annotated git tag, and pushes everything to remote |
-| [taste](https://github.com/pavelsimo/taste) | Analyze repositories to extract shared engineering conventions, style guidelines, and anti-patterns |
-| [review](https://github.com/pavelsimo/review) | Perform deep, evidence-first code review on local diffs, staged changes, branch comparisons, or GitHub PRs and issues |
-| [humanize](https://github.com/pavelsimo/humanize) | Remove AI writing patterns and make text sound natural and human |
-| [ytd](https://github.com/pavelsimo/ytd) | Download YouTube videos, audio, or transcripts from the command line with quality and language controls |
-| [create-skill](https://github.com/pavelsimo/create-skill) | Bootstrap a new agent skill with files, GitHub repo, and skills index registration |
-| [create-docs](https://github.com/pavelsimo/create-docs) | Analyze a codebase and generate or refresh LLM-optimized documentation in docs/ or a custom directory |
-| [search-anime](https://github.com/pavelsimo/search-anime) | Search anime and manga using the ani CLI |
+<table>
+<thead>
+<tr><th width="140">Skill</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://github.com/pavelsimo/changelog">changelog</a></td><td>Generate changelog entries from git history following Keep a Changelog conventions and manage versioned releases</td></tr>
+<tr><td><a href="https://github.com/pavelsimo/commit">commit</a></td><td>Generate conventional git commits with gitmoji prefix and lowercase message style</td></tr>
+<tr><td><a href="https://github.com/pavelsimo/create-cli">create-cli</a></td><td>Scaffold production-ready CLI projects from language templates (go template: Cobra, CI/CD, goreleaser, GitHub Pages)</td></tr>
+<tr><td><a href="https://github.com/pavelsimo/markdown">markdown</a></td><td>Convert files and URLs to clean Markdown using markitdown via uvx — no installation required</td></tr>
+<tr><td><a href="https://github.com/pavelsimo/mermaid">mermaid</a></td><td>Generate Mermaid diagrams from source files, schemas, or plain-text descriptions with automatic or manual diagram type selection</td></tr>
+<tr><td><a href="https://github.com/pavelsimo/release">release</a></td><td>Cut a full versioned release in one step: updates <code>CHANGELOG.md</code>, commits it, creates an annotated git tag, and pushes everything to remote</td></tr>
+<tr><td><a href="https://github.com/pavelsimo/taste">taste</a></td><td>Analyze repositories to extract shared engineering conventions, style guidelines, and anti-patterns</td></tr>
+<tr><td><a href="https://github.com/pavelsimo/review">review</a></td><td>Perform deep, evidence-first code review on local diffs, staged changes, branch comparisons, or GitHub PRs and issues</td></tr>
+<tr><td><a href="https://github.com/pavelsimo/humanize">humanize</a></td><td>Remove AI writing patterns and make text sound natural and human</td></tr>
+<tr><td><a href="https://github.com/pavelsimo/ytd">ytd</a></td><td>Download YouTube videos, audio, or transcripts from the command line with quality and language controls</td></tr>
+<tr><td><a href="https://github.com/pavelsimo/create-skill">create-skill</a></td><td>Bootstrap a new agent skill with files, GitHub repo, and skills index registration</td></tr>
+<tr><td><a href="https://github.com/pavelsimo/create-docs">create-docs</a></td><td>Analyze a codebase and generate or refresh LLM-optimized documentation in docs/ or a custom directory</td></tr>
+<tr><td><a href="https://github.com/pavelsimo/search-anime">search-anime</a></td><td>Search anime and manga using the ani CLI</td></tr>
+</tbody>
+</table>
 
 ---
 
