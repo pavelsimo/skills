@@ -24,6 +24,7 @@ npx skills@latest add pavelsimo/skills
 | [ytd](https://github.com/pavelsimo/ytd) | Download YouTube videos, audio, or transcripts from the command line with quality and language controls |
 | [create-skill](https://github.com/pavelsimo/create-skill) | Bootstrap a new agent skill with files, GitHub repo, and skills index registration |
 | [create-docs](https://github.com/pavelsimo/create-docs) | Analyze a codebase and generate or refresh LLM-optimized documentation in docs/ or a custom directory |
+| [search-anime](https://github.com/pavelsimo/search-anime) | Natural-language anime and manga assistant — browse trending, discover hidden gems, search by vibe, and find where to stream each title |
 
 ---
 
@@ -190,4 +191,20 @@ Systematically analyzes a project and generates or refreshes seven LLM-optimized
 /create-docs --no-overwrite             # skip files that already exist
 /create-docs --only <section>           # refresh one section only
 /create-docs --dry-run                  # preview without writing files
+```
+
+---
+
+### [search-anime](https://github.com/pavelsimo/search-anime)
+
+Natural-language anime and manga assistant powered by the `ani` CLI and AniList. Ask in plain English — "dark psychological thriller finished" or "something like Attack on Titan" — and get beautifully formatted results with score emojis, genre pills, airing countdowns, streaming links (Crunchyroll, HIDIVE, etc.), and community recommendations.
+
+```
+/search-anime                                # trending digest (anime + manga)
+/search-anime trending [--manga]             # what's trending right now
+/search-anime search <natural query>         # smart NL search
+/search-anime info <title or AniList id>     # full detail card with streaming links
+/search-anime digest                         # full weekly briefing
+/search-anime gems [--manga]                 # high-score, lower-profile titles
+/search-anime binge                          # completed long-run series
 ```

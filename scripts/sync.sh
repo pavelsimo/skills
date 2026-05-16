@@ -30,6 +30,7 @@ SKILLS=(
   "create-cli https://github.com/pavelsimo/create-cli.git main"
   "create-skill https://github.com/pavelsimo/create-skill.git main"
   "create-docs https://github.com/pavelsimo/create-docs.git main"
+  "search-anime https://github.com/pavelsimo/search-anime.git main"
 )
 
 for entry in "${SKILLS[@]}"; do
