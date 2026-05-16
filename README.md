@@ -197,7 +197,7 @@ Systematically analyzes a project and generates or refreshes seven LLM-optimized
 
 ### [search-anime](https://github.com/pavelsimo/search-anime)
 
-Natural-language anime and manga assistant powered by the `ani` CLI and AniList. Ask in plain English — "dark psychological thriller finished" or "something like Attack on Titan" — and get beautifully formatted results with score emojis, genre pills, airing countdowns, streaming links (Crunchyroll, HIDIVE, etc.), and community recommendations.
+Search anime and manga by natural-language query using the `ani` CLI and AniList.
 
 ```
 /search-anime                                # trending digest (anime + manga)
