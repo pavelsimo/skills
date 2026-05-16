@@ -24,7 +24,7 @@ npx skills@latest add pavelsimo/skills
 | [ytd](https://github.com/pavelsimo/ytd) | Download YouTube videos, audio, or transcripts from the command line with quality and language controls |
 | [create-skill](https://github.com/pavelsimo/create-skill) | Bootstrap a new agent skill with files, GitHub repo, and skills index registration |
 | [create-docs](https://github.com/pavelsimo/create-docs) | Analyze a codebase and generate or refresh LLM-optimized documentation in docs/ or a custom directory |
-| [search-anime](https://github.com/pavelsimo/search-anime) | Natural-language anime and manga assistant — browse trending, discover hidden gems, search by vibe, and find where to stream each title |
+| [search-anime](https://github.com/pavelsimo/search-anime) | Search anime and manga using the ani CLI |
 
 ---
 
