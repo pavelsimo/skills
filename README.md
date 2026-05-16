@@ -2,28 +2,6 @@
 
 A collection of agent skills for AI-assisted development.
 
-## Setup
-
-Clone the repository and sync all skills:
-
-```bash
-git clone https://github.com/pavelsimo/skills.git
-cd skills
-./sync.sh
-```
-
-To update all skills to their latest version:
-
-```bash
-./sync.sh
-```
-
-To update a single skill:
-
-```bash
-./sync.sh --skill <name>
-```
-
 ## Installing with npx
 
 ```bash

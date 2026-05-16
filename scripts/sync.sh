@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 SKILLS_DIR="$REPO_DIR/skills"
 UPDATE_README=false
 TARGET_SKILL=""
