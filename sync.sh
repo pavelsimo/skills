@@ -42,6 +42,12 @@ for entry in "${SKILLS[@]}"; do
     git -C "$dest" fetch --quiet origin
     git -C "$dest" checkout --quiet "$branch"
     git -C "$dest" pull --quiet origin "$branch"
+  elif [[ -d "$dest" ]]; then
+    echo "→ Initializing $name..."
+    git -C "$dest" init --quiet
+    git -C "$dest" remote add origin "$url"
+    git -C "$dest" fetch --quiet origin "$branch"
+    git -C "$dest" checkout --quiet -B "$branch" "origin/$branch"
   else
     echo "→ Cloning $name..."
     git clone --quiet --branch "$branch" "$url" "$dest"
