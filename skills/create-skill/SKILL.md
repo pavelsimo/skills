@@ -15,7 +15,7 @@ A Claude Code skill that scaffolds a new agent skill from a plain-text descripti
 - writes an MIT LICENSE with the current year and "Pavel Simo" as the copyright holder
 - initializes a git repo and makes the first 🎉 init commit
 - creates a public GitHub repo via `gh` cli
-- registers the new skill as a git submodule in pavelsimo/skills
+- registers the new skill in scripts/sync.sh in pavelsimo/skills and syncs it locally
 - updates `skills/README.md`: adds a table row and a detailed `### [name]` section
 - commits and pushes both repos
 
@@ -100,11 +100,15 @@ A Claude Code skill that scaffolds a new agent skill from a plain-text descripti
 
 10. register in the skills index (skip if `--no-index`):
     - locate the skills index repo:
-      - look for a directory named `skills/` that is a sibling of `<name>/` and contains `.gitmodules` with a `pavelsimo/skills` remote; use it if found
+      - look for a directory named `skills/` that is a sibling of `<name>/` and contains `scripts/sync.sh`; use it if found
       - otherwise run `gh repo clone pavelsimo/skills` to a temp location and use that
-    - inside the skills index directory, run:
+    - add a new entry to the `SKILLS` array in `scripts/sync.sh` (before the closing `)`), matching the existing 2-space-indented quoted-triplet format:
+      ```
+        "<name> https://github.com/pavelsimo/<name>.git main"
+      ```
+    - run the sync script to clone the new skill locally:
       ```bash
-      git submodule add https://github.com/pavelsimo/<name>.git <name>
+      bash scripts/sync.sh --skill <name>
       ```
     - update `README.md` in the skills index:
       - add a row to the existing skills table: `| [<name>](https://github.com/pavelsimo/<name>) | <description> |`
@@ -120,7 +124,7 @@ A Claude Code skill that scaffolds a new agent skill from a plain-text descripti
         ```
     - commit and push:
       ```bash
-      git add .gitmodules <name> README.md
+      git add scripts/sync.sh README.md
       git commit -m "➕ add <name> skill"
       git push
       ```
@@ -143,4 +147,4 @@ A Claude Code skill that scaffolds a new agent skill from a plain-text descripti
 - **one atomic commit per repo** — `🎉 init` in the skill repo; `➕ add` in the skills index
 - **preserve README.md structure** — insert the table row inside the existing `| Skill | Description |` table; add the detailed `###` section at the bottom
 - **derive the year dynamically** — run `date +%Y` rather than hardcoding the current year in the LICENSE
-- **submodule path matches skill name** — the submodule directory name in skills/ must exactly match `<name>`
+- **sync.sh entry format** — each entry in the SKILLS array must be a quoted triplet: `"name url branch"`; use `main` as branch unless the skill repo uses `master`
