@@ -2,23 +2,32 @@
 
 A collection of agent skills for AI-assisted development.
 
-This repository links each skill as a Git submodule, so the full collection can
-be cloned into one folder while each skill keeps its own repository history.
+## Setup
+
+Clone the repository and sync all skills:
 
 ```bash
-git clone --recurse-submodules https://github.com/pavelsimo/skills.git
+git clone https://github.com/pavelsimo/skills.git
+cd skills
+./sync.sh
 ```
 
-If you already cloned the repository without submodules:
+To update all skills to their latest version:
 
 ```bash
-git submodule update --init --recursive
+./sync.sh
 ```
 
-To refresh the linked skill repos later:
+To update a single skill:
 
 ```bash
-git submodule update --remote --merge
+./sync.sh --skill <name>
+```
+
+## Installing with npx
+
+```bash
+npx skills@latest add pavelsimo/skills
 ```
 
 ## Skills
