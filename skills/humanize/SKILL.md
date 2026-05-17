@@ -1,6 +1,6 @@
 ---
 name: humanize
-description: remove AI writing patterns and make text sound natural and human
+description: Removes 29 AI writing patterns and rewrites text to sound natural and human, with optional voice calibration from a writing sample. Use when the user has text that sounds AI-generated and wants it rewritten with a natural, human voice.
 trigger: /humanize
 ---
 

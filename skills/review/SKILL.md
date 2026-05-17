@@ -1,6 +1,6 @@
 ---
 name: review
-description: "Local-first deep code review: bugs, local diffs, PRs, issues, evidence-first, code-aware."
+description: Performs deep, evidence-first code review on local diffs, staged changes, branch comparisons, or GitHub PRs and issues, with severity-annotated findings. Use when the user wants to review code changes, audit a pull request, or investigate a GitHub issue.
 trigger: /review
 ---
 

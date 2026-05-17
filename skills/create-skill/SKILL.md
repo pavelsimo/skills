@@ -1,6 +1,6 @@
 ---
 name: create-skill
-description: bootstrap a new agent skill with files, GitHub repo, and skills index registration
+description: Bootstraps a new agent skill by generating SKILL.md, README.md, and LICENSE, initializing a git repo, creating a GitHub repo, and registering in the pavelsimo/skills index. Use when the user wants to create a new Claude Code skill from scratch.
 trigger: /create-skill
 ---
 

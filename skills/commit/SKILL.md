@@ -1,6 +1,6 @@
 ---
 name: commit
-description: create a conventional git commit with gitmoji prefix and lowercase message
+description: Creates a conventional git commit with gitmoji prefix and lowercase imperative message. Use when the user is ready to commit staged changes or wants help composing a clean, atomic commit message.
 trigger: /commit
 ---
 

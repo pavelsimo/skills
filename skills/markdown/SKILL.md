@@ -1,6 +1,6 @@
 ---
 name: markdown
-description: "Convert files to Markdown using uvx markitdown — PDF, Office, HTML, data, OCR, audio, ZIP, YouTube."
+description: Converts files to Markdown using uvx markitdown, supporting PDF, Word, PowerPoint, Excel, HTML, images with OCR, audio with transcription, ZIP archives, and YouTube URLs. Use when the user wants to convert a file or URL to Markdown.
 trigger: /markdown
 ---
 

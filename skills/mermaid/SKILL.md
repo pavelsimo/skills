@@ -1,6 +1,6 @@
 ---
 name: mermaid
-description: generate mermaid diagrams from source files, descriptions, or the current codebase
+description: Generates Mermaid diagrams from source files, schemas, or descriptions, with automatic diagram type detection. Use when the user wants to visualize code architecture, database schemas, request flows, or any system as a Mermaid diagram.
 trigger: /mermaid
 ---
 

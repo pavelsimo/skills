@@ -1,6 +1,6 @@
 ---
 name: changelog
-description: generate changelog entries from git history and cut releases following Keep a Changelog conventions
+description: Generates changelog entries from git history following Keep a Changelog conventions and cuts versioned releases. Use when the user wants to update CHANGELOG.md with recent commits or promote [Unreleased] to a versioned release.
 trigger: /changelog
 ---
 

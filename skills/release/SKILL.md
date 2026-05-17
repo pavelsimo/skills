@@ -1,6 +1,6 @@
 ---
 name: release
-description: cut a versioned release — changelog, commit, tag, and push in one step
+description: Cuts a versioned release by updating CHANGELOG.md, committing, creating an annotated git tag, and pushing to remote in one step. Use when the user wants to publish a new version of their project.
 trigger: /release
 ---
 

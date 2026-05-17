@@ -1,6 +1,6 @@
 ---
 name: create-docs
-description: analyze a codebase and generate or refresh LLM-optimized documentation in docs/ or a custom directory
+description: Analyzes a codebase and generates LLM-optimized documentation covering project overview, architecture, build system, testing, development patterns, deployment, and a file catalog. Use when the user wants to document a codebase or refresh existing project documentation.
 trigger: /create-docs
 ---
 
