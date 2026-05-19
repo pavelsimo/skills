@@ -29,6 +29,8 @@ npx skills@latest add pavelsimo/skills
 <tr><td><a href="https://github.com/pavelsimo/create-docs">create-docs</a></td><td>Analyze a codebase and generate or refresh LLM-optimized documentation in docs/ or a custom directory</td></tr>
 <tr><td><a href="https://github.com/pavelsimo/search-anime">search-anime</a></td><td>Search anime and manga using the ani CLI</td></tr>
 <tr><td><a href="https://github.com/pavelsimo/create-html">create-html</a></td><td>Transform any document (PDF, DOCX, PPTX, Markdown, text) into a polished HTML file by auto-selecting from 20 purpose-built presentation templates</td></tr>
+<tr><td><a href="https://github.com/pavelsimo/create-issue">create-issue</a></td><td>Turn a rough description into a structured GitHub issue with gitmoji title, problem statement, acceptance criteria, and technical notes — with an optional interview mode that reads the codebase first</td></tr>
+<tr><td><a href="https://github.com/pavelsimo/refine-issue">refine-issue</a></td><td>Fetch an existing GitHub issue by number, rewrite it to a consistent template with gitmoji title and structured sections, and update it in-place via gh</td></tr>
 </tbody>
 </table>
 
@@ -226,4 +228,28 @@ Converts any document to Markdown via `uvx markitdown`, analyzes the content to 
 /create-html report.docx --template 11     # force weekly status report template
 /create-html notes.md --output brief.html  # custom output filename
 /create-html --list-templates              # print all 20 templates
+```
+
+---
+
+### [create-issue](https://github.com/pavelsimo/create-issue)
+
+Turns a rough description into a structured GitHub issue with a gitmoji-prefixed title, problem statement, acceptance criteria (as checkboxes), steps to reproduce (for bugs), and optional technical notes. An `--interview` mode reads the codebase first and asks targeted questions before drafting anything.
+
+```
+/create-issue "users can't log in after password reset"   # direct from description
+/create-issue --interview                                  # read repo, ask questions
+/create-issue --type bug --dry-run                         # preview without posting
+```
+
+---
+
+### [refine-issue](https://github.com/pavelsimo/refine-issue)
+
+Fetches an existing GitHub issue by number, rewrites it to the same structured template (gitmoji title, 🤔 Problem, ✅ Acceptance Criteria, and more), and updates it in-place. Shows a before/after diff and waits for confirmation before touching anything.
+
+```
+/refine-issue 42                     # fetch, rewrite, confirm, update
+/refine-issue 42 --dry-run           # show rewritten issue without posting
+/refine-issue 42 --repo owner/repo   # target a specific repo
 ```
