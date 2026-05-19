@@ -28,6 +28,7 @@ npx skills@latest add pavelsimo/skills
 <tr><td><a href="https://github.com/pavelsimo/create-skill">create-skill</a></td><td>Bootstrap a new agent skill with files, GitHub repo, and skills index registration</td></tr>
 <tr><td><a href="https://github.com/pavelsimo/create-docs">create-docs</a></td><td>Analyze a codebase and generate or refresh LLM-optimized documentation in docs/ or a custom directory</td></tr>
 <tr><td><a href="https://github.com/pavelsimo/search-anime">search-anime</a></td><td>Search anime and manga using the ani CLI</td></tr>
+<tr><td><a href="https://github.com/pavelsimo/create-html">create-html</a></td><td>Transform any document (PDF, DOCX, PPTX, Markdown, text) into a polished HTML file by auto-selecting from 20 purpose-built presentation templates</td></tr>
 </tbody>
 </table>
 
@@ -212,4 +213,17 @@ Search anime and manga by natural-language query using the `ani` CLI and AniList
 /search-anime digest                         # full weekly briefing
 /search-anime gems [--manga]                 # high-score, lower-profile titles
 /search-anime binge                          # completed long-run series
+```
+
+---
+
+### [create-html](https://github.com/pavelsimo/create-html)
+
+Converts any document to Markdown via `uvx markitdown`, analyzes the content to select the most appropriate template from a library of 20 purpose-built HTML formats (slide decks, status reports, incident timelines, code reviews, concept explainers, and more), then generates a self-contained HTML file ready to open in a browser.
+
+```
+/create-html slides.pptx                   # auto-select template and convert
+/create-html report.docx --template 11     # force weekly status report template
+/create-html notes.md --output brief.html  # custom output filename
+/create-html --list-templates              # print all 20 templates
 ```
