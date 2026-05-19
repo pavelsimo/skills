@@ -246,7 +246,7 @@ Turns a rough description into a structured GitHub issue with a gitmoji-prefixed
 
 ### [refine-issue](https://github.com/pavelsimo/refine-issue)
 
-Fetches an existing GitHub issue by number, rewrites it to the same structured template (gitmoji title, 🤔 Problem, ✅ Acceptance Criteria, and more), and updates it in-place. Shows a before/after diff and waits for confirmation before touching anything.
+Fetches an existing GitHub issue by number, rewrites it to the same structured template (gitmoji title, Problem, Acceptance Criteria, and more), and updates it in-place. Shows a before/after diff and waits for confirmation before touching anything.
 
 ```
 /refine-issue 42                     # fetch, rewrite, confirm, update
