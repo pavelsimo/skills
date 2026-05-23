@@ -12,6 +12,12 @@ A skill for agents that scaffolds production-ready CLI projects from language te
 | `go` | Go | Cobra, Makefile, golangci-lint, goreleaser, Homebrew tap, Node.js docs site |
 | `python` | Python | Typer, uv, ruff+mypy, pytest, PyPI OIDC publishing, Homebrew tap, Node.js docs site |
 
+## Installation
+
+```bash
+npx skills@latest add pavelsimo/create-cli
+```
+
 ## Usage
 
 ```
@@ -77,12 +83,6 @@ The skill asks for a name and description, shows you a CLI design spec to review
 | `{{MODULE_PATH}}` | `github.com/{user}/{name}` | Go module path _(go template only)_ |
 | `{{MODULE_NAME}}` | `{name}` with `-` → `_` | Python package name _(python template only)_ |
 | `{{TOOL_CLASS}}` | PascalCase of `{name}` | Homebrew formula class _(python template only)_ |
-
-## Installation
-
-```bash
-npx skills@latest add pavelsimo/create-cli
-```
 
 ## Attribution
 
