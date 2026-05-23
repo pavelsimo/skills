@@ -10,6 +10,7 @@ A skill for agents that scaffolds production-ready CLI projects from language te
 | Template | Language | Stack |
 |---|---|---|
 | `go` | Go | Cobra, Makefile, golangci-lint, goreleaser, Homebrew tap, Node.js docs site |
+| `python` | Python | Typer, uv, ruff+mypy, pytest, PyPI OIDC publishing, Homebrew tap, Node.js docs site |
 
 ## Usage
 
@@ -36,6 +37,24 @@ The skill asks for a name and description, shows you a CLI design spec to review
 | `.github/workflows/release.yml` | Release: goreleaser + Homebrew tap dispatch on tag push |
 | `.github/workflows/pages.yml` | Docs deploy to GitHub Pages on `docs/**` changes |
 
+## What Gets Created (python template)
+
+| File / Directory | Purpose |
+|---|---|
+| `{module_name}/cli.py` | Typer app with global flags (`--json`, `--no-color`, `--verbose`, `--dry-run`) |
+| `{module_name}/__init__.py` | Package version (`__version__ = "0.1.0"`) |
+| `tests/test_cli.py` | CliRunner smoke tests (version, help, flags) |
+| `pyproject.toml` | hatchling build backend, ruff, mypy, pytest config |
+| `Makefile` | `install`, `build`, `test`, `lint`, `fmt`, `docs`, `ci`, `publish` targets |
+| `.lefthook.yml` | Pre-commit hooks: ruff format-check + ruff lint + mypy |
+| `Formula/{name}.rb` | Homebrew formula (virtualenv install, update SHA on first release) |
+| `AGENTS.md` | Canonical agent instructions; `CLAUDE.md` symlinks here |
+| `docs/index.md` | Project docs landing page |
+| `scripts/build-docs-site.mjs` | Pure Node.js SSG — no external deps, outputs to `dist/docs-site/` |
+| `.github/workflows/ci.yml` | CI: ruff + mypy + pytest on every push/PR |
+| `.github/workflows/release.yml` | Release: PyPI OIDC + GitHub Release + Homebrew tap on tag push |
+| `.github/workflows/pages.yml` | Docs deploy to GitHub Pages on `docs/**` changes |
+
 ## Template Variables
 
 | Variable | Default | Description |
@@ -46,6 +65,8 @@ The skill asks for a name and description, shows you a CLI design spec to review
 | `{{HOMEBREW_TAP}}` | `{user}/homebrew-tap` | Homebrew tap repo |
 | `{{YEAR}}` | current year | Used in LICENSE |
 | `{{MODULE_PATH}}` | `github.com/{user}/{name}` | Go module path _(go template only)_ |
+| `{{MODULE_NAME}}` | `{name}` with `-` → `_` | Python package name _(python template only)_ |
+| `{{TOOL_CLASS}}` | PascalCase of `{name}` | Homebrew formula class _(python template only)_ |
 
 ## Installation
 

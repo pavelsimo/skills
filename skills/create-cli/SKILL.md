@@ -1,13 +1,13 @@
 ---
 name: create-cli
-description: Scaffolds production-ready CLI projects from language templates, currently supporting Go with Cobra, Makefile, golangci-lint, goreleaser, and GitHub Pages docs. Use when the user wants to bootstrap a new command-line tool project from scratch.
+description: Scaffolds production-ready CLI projects from language templates, supporting Go with Cobra, Makefile, golangci-lint, goreleaser, and GitHub Pages docs; and Python with Typer, uv, ruff+mypy, PyPI OIDC trusted publishing, and GitHub Pages docs. Use when the user wants to bootstrap a new command-line tool project from scratch.
 trigger: /create-cli
 ---
 
 # Create CLI
 
 Scaffold a complete CLI project from a language template, applying CLI design conventions from clig.dev.
-Currently available template: `go`.
+Available templates: `go`, `python`.
 
 ## Do This First
 
@@ -21,6 +21,7 @@ Ask only for what cannot be inferred. Proceed with best-guess defaults if the us
 1. **name** — CLI tool name (lowercase, hyphenated; e.g. `my-tool`)
 2. **template** — language template to use (default: `go`)
    - `go` — Cobra, Makefile, golangci-lint, goreleaser, Homebrew tap, Node.js docs site
+   - `python` — Typer, uv, ruff+mypy, pytest, PyPI OIDC publishing, Homebrew tap, Node.js docs site
 3. **description** — one-sentence purpose (e.g. "search and sync files across storage backends")
 4. **github_user** — detect with `gh api user --jq .login`; confirm with user
 5. **homebrew_tap** — Homebrew tap repo (default: `{github_user}/homebrew-tap`)
@@ -30,7 +31,9 @@ Ask only for what cannot be inferred. Proceed with best-guess defaults if the us
    - `purple` — violet accent, deep purple background (creative, distinctive)
    - `amber` — gold accent, warm dark background (warm, unique)
 
-Go template only: derive `module_path` as `github.com/{github_user}/{name}` — do not ask.
+Template-specific derived values — do not ask for these:
+- `go` only: derive `module_path` as `github.com/{github_user}/{name}`
+- `python` only: derive `module_name` as `{name}` with `-` replaced by `_` (e.g. `my-tool` → `my_tool`); derive `tool_class` as PascalCase of `{name}` (e.g. `my-tool` → `MyTool`)
 
 ## Step 2 — Design
 
@@ -45,14 +48,19 @@ Produce a compact CLI spec the user can review before scaffolding:
 
 Apply these defaults unless the user overrides:
 - `-h/--help` always shows help, ignores other args
-- `--version` prints version to stdout
+- `--version` / `-V` prints version to stdout
 - `--json` for machine-readable output
 - `--no-color` + `NO_COLOR` env respected
-- `--dry-run` for any state-changing operation
+- `--dry-run` / `-n` for any state-changing operation
 - `--no-input` disables interactive prompts
 - Prompts only when stdin is a TTY
 - Destructive ops require `--force` or `--confirm=…` in non-interactive mode
 - Ctrl-C exits fast with bounded cleanup
+
+Python template additional notes:
+- Typer generates `--help` and `-h` automatically via `context_settings={"help_option_names": ["-h", "--help"]}`
+- Shell completions use `{name} --install-completion` (Typer built-in, not `completion <shell>`)
+- A `version` subcommand is provided in addition to the `--version` eager flag
 
 Show the spec to the user and wait for confirmation before proceeding to Step 3.
 
@@ -81,20 +89,38 @@ go install github.com/evilmartians/lefthook@latest
 lefthook install
 # — end go template steps —
 
-# 5. Initial commit
+# — python template only —
+# 3. Rename the placeholder module directory to the actual package name
+mv MODULE_NAME {module_name}
+
+# 4. Rename the placeholder formula file to the actual tool name
+mv Formula/TOOL_NAME.rb Formula/{name}.rb
+
+# 5. Install dependencies and activate git hooks
+uv sync --dev
+lefthook install
+
+# 6. Seed the Homebrew tap formula (skip if tap repo does not exist yet)
+git clone "https://x-access-token:$(gh auth token)@github.com/{homebrew_tap}.git" tap 2>/dev/null && \
+  mkdir -p tap/Formula && \
+  cp Formula/{name}.rb tap/Formula/ && \
+  cd tap && git add . && git commit -m "🎉 add {name} formula" && git push && cd .. && rm -rf tap || true
+# — end python template steps —
+
+# 5 (go) / 7 (python). Initial commit
 git add .
 git commit -m "🎉 init {name}"
 git push -u origin main
 
-# 6. Disable wiki, ensure issues are enabled
+# Disable wiki, ensure issues are enabled
 gh repo edit --enable-wiki=false
 
-# 7. Enable GitHub Pages (docs will deploy on first push that touches docs/)
+# Enable GitHub Pages (docs will deploy on first push that touches docs/)
 gh api repos/{github_user}/{name}/pages \
   -X POST \
   -f build_type=workflow 2>/dev/null || true
 
-# 8. Set HOMEBREW_TAP_TOKEN so the release workflow can publish to the Homebrew tap
+# Set HOMEBREW_TAP_TOKEN so the release workflow can publish to the Homebrew tap
 gh secret set HOMEBREW_TAP_TOKEN \
   --repo {github_user}/{name} \
   --body "$(gh auth token)"
@@ -102,19 +128,25 @@ gh secret set HOMEBREW_TAP_TOKEN \
 
 ### Template variable substitution
 
-When copying from `templates/go/`, replace every occurrence of:
+When copying from `templates/{template}/`, replace every occurrence of:
 
-| Placeholder | Replaces with |
-|-------------|---------------|
-| `{{TOOL_NAME}}` | CLI name (e.g. `my-tool`) |
-| `{{GITHUB_USER}}` | GitHub username/org |
-| `{{DESCRIPTION}}` | One-sentence description |
-| `{{HOMEBREW_TAP}}` | Homebrew tap repo (e.g. `pavelsimo/homebrew-tap`) |
-| `{{YEAR}}` | Current 4-digit year |
-| `{{MODULE_PATH}}` | `github.com/{github_user}/{name}` **(go template only)** |
-| `{{COLOR_SCHEME}}` | Docs color theme: `teal`, `ocean`, `purple`, or `amber` |
+| Placeholder | Replaces with | Template |
+|-------------|---------------|----------|
+| `{{TOOL_NAME}}` | CLI name (e.g. `my-tool`) | all |
+| `{{GITHUB_USER}}` | GitHub username/org | all |
+| `{{DESCRIPTION}}` | One-sentence description | all |
+| `{{HOMEBREW_TAP}}` | Homebrew tap repo (e.g. `pavelsimo/homebrew-tap`) | all |
+| `{{YEAR}}` | Current 4-digit year | all |
+| `{{COLOR_SCHEME}}` | Docs color theme: `teal`, `ocean`, `purple`, or `amber` | all |
+| `{{MODULE_PATH}}` | `github.com/{github_user}/{name}` | go only |
+| `{{MODULE_NAME}}` | Package name with `-` → `_` (e.g. `my_tool`) | python only |
+| `{{TOOL_CLASS}}` | PascalCase class name (e.g. `MyTool`) | python only |
 
 After substitution, rename every `*.tmpl` file by stripping the `.tmpl` extension.
+
+Python template additional renames (after stripping `.tmpl`):
+- Directory `MODULE_NAME/` → `{module_name}/` (e.g. `my_tool/`)
+- File `Formula/TOOL_NAME.rb` → `Formula/{name}.rb` (e.g. `Formula/my-tool.rb`)
 
 Create the CLAUDE.md symlink in the generated project root:
 ```bash
@@ -125,7 +157,6 @@ ln -s AGENTS.md CLAUDE.md
 
 ```
 ✅ Created:    https://github.com/{github_user}/{name}
-📦 Module:     github.com/{github_user}/{name}  (go template)
 📄 Docs:       https://{github_user}.github.io/{name}  (deploys after first docs/ push)
 
 Generated (go template):
@@ -146,20 +177,58 @@ Generated (go template):
   .github/workflows/release.yml ← goreleaser + Homebrew tap on tag push
   .github/workflows/pages.yml  ← docs site deploy on docs/ changes
 
-Next steps:
+Next steps (go):
   • Add subcommands in cmd/ (each in its own file)
   • Fill in business logic in internal/
   • Push a v0.1.0 tag to trigger the first release: git tag v0.1.0 && git push --tags
+
+Generated (python template):
+  {module_name}/__init__.py    ← version = "0.1.0"
+  {module_name}/__main__.py    ← python -m entry point
+  {module_name}/cli.py         ← Typer app, global flags, version subcommand
+  tests/test_cli.py            ← CliRunner smoke tests
+  pyproject.toml               ← hatchling build, ruff, mypy, pytest config
+  Makefile                     ← install / build / test / lint / fmt / docs / ci / publish
+  .lefthook.yml                ← pre-commit: ruff format-check + ruff lint + mypy
+  Formula/{name}.rb            ← Homebrew formula (update SHA on first PyPI release)
+  AGENTS.md                    ← canonical agent instructions; CLAUDE.md symlinks here
+  docs/index.md                ← docs landing page
+  docs/install.md              ← installation instructions (Homebrew, pip, pipx, PyPI)
+  docs/quickstart.md           ← common patterns in 60 seconds
+  docs/reference.md            ← global flags, env vars, exit codes, completions
+  scripts/build-docs-site.mjs  ← pure Node.js SSG, no deps (color theme: {color_scheme})
+  .github/workflows/ci.yml     ← ruff + mypy + pytest on every push/PR
+  .github/workflows/release.yml ← PyPI OIDC + GitHub Release + Homebrew tap on tag
+  .github/workflows/pages.yml  ← docs site deploy on docs/ changes
+
+Next steps (python):
+  • Add subcommands: @app.command() in {module_name}/cli.py
+  • Configure PyPI trusted publishing at https://pypi.org/manage/account/publishing/
+    Set: owner={github_user}, repository={name}, workflow=release.yml, environment=release
+  • Push a v0.1.0 tag to trigger the first release: git tag v0.1.0 && git push --tags
+  • After first PyPI release, update Homebrew formula resource SHAs with:
+    uv run pip-audit or homebrew-pypi-poet (optional)
 ```
 
 ## Default Conventions
 
 - Command tree is subcommand-centric: `{name} <verb> [args]`
-- `SilenceUsage: true` on all RunE commands — don't dump usage on every error
 - Primary data to stdout; diagnostics, progress, and errors to stderr
 - Output structs defined early; human table is a rendering layer on top of the same struct
 - Flag names are lowercase hyphenated (never camelCase)
 - Short flags only for the most-used: `-v` verbose, `-q` quiet, `-n` dry-run, `-f` force, `-o` output
 - `--read-only` / `READONLY=1` env as safety mode for agent use
-- Shell completions via `cobra` built-ins (`{name} completion bash|zsh|fish|powershell`) (go template)
-- README badges: `flat-square` style, `logoColor=white`, branded hex colors; order: release → license MIT → Go → Homebrew → DeepWiki; **no CI/coverage badges**
+- README badges: `flat-square` style, `logoColor=white`, branded hex colors; **no CI/coverage badges**
+
+Go-specific:
+- `SilenceUsage: true` on all `RunE` commands — don't dump usage on every error
+- Shell completions via `cobra` built-ins: `{name} completion bash|zsh|fish|powershell`
+- Badge order: release → license MIT → Go → Homebrew → DeepWiki
+
+Python-specific:
+- Typer handles `--help` / `-h` automatically via `context_settings`
+- Shell completions via Typer built-ins: `{name} --install-completion [bash|zsh|fish]`
+- `no_args_is_help=True` on the Typer app so bare `{name}` shows help
+- `rich_markup_mode="rich"` enables Rich markup in docstrings
+- Type annotations required on all functions; mypy strict mode is enforced
+- Badge order: release → license MIT → Python → PyPI → Homebrew → DeepWiki

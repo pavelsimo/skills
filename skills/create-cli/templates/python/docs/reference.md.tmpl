@@ -1,0 +1,43 @@
+---
+title: Reference
+description: Global flags, environment variables, exit codes, and shell completions
+---
+
+## Global flags
+
+| Flag | Short | Default | Description |
+|------|-------|---------|-------------|
+| `--help` | `-h` | — | Show help for the current command |
+| `--version` | `-V` | — | Show version and exit |
+| `--verbose` | `-v` | `false` | Enable verbose output |
+| `--quiet` | `-q` | `false` | Suppress non-essential output |
+| `--json` | — | `false` | Output results as JSON |
+| `--no-color` | — | `false` | Disable ANSI color output |
+| `--dry-run` | `-n` | `false` | Preview changes without applying them |
+| `--no-input` | — | `false` | Disable interactive prompts |
+
+## Environment variables
+
+| Variable | Description |
+|----------|-------------|
+| `NO_COLOR` | Set to any non-empty value to disable color output |
+
+## Exit codes
+
+| Code | Meaning |
+|------|---------|
+| `0` | Success |
+| `1` | Runtime failure |
+| `2` | Invalid usage |
+
+## Shell completions
+
+Typer provides built-in shell completion support:
+
+```bash
+# Install completion for your shell (auto-detects)
+{{TOOL_NAME}} --install-completion
+
+# Show the completion script without installing
+{{TOOL_NAME}} --show-completion
+```

@@ -17,7 +17,7 @@ npx skills@latest add pavelsimo/skills
 <tbody>
 <tr><td><a href="https://github.com/pavelsimo/changelog">changelog</a></td><td>Generate changelog entries from git history following Keep a Changelog conventions and manage versioned releases</td></tr>
 <tr><td><a href="https://github.com/pavelsimo/commit">commit</a></td><td>Generate conventional git commits with gitmoji prefix and lowercase message style</td></tr>
-<tr><td><a href="https://github.com/pavelsimo/create-cli">create-cli</a></td><td>Scaffold production-ready CLI projects from language templates (go template: Cobra, CI/CD, goreleaser, GitHub Pages)</td></tr>
+<tr><td><a href="https://github.com/pavelsimo/create-cli">create-cli</a></td><td>Scaffold production-ready CLI projects from language templates — Go (Cobra, goreleaser, GitHub Pages) and Python (Typer, uv, ruff+mypy, PyPI OIDC publishing, GitHub Pages)</td></tr>
 <tr><td><a href="https://github.com/pavelsimo/markdown">markdown</a></td><td>Convert files and URLs to clean Markdown using markitdown via uvx — no installation required</td></tr>
 <tr><td><a href="https://github.com/pavelsimo/mermaid">mermaid</a></td><td>Generate Mermaid diagrams from source files, schemas, or plain-text descriptions with automatic or manual diagram type selection</td></tr>
 <tr><td><a href="https://github.com/pavelsimo/release">release</a></td><td>Cut a full versioned release in one step: updates <code>CHANGELOG.md</code>, commits it, creates an annotated git tag, and pushes everything to remote</td></tr>
@@ -56,7 +56,7 @@ Examples:
 
 ### [create-cli](https://github.com/pavelsimo/create-cli)
 
-Scaffolds production-ready CLI projects from language templates. Invoke `/create-cli`, pick a template (currently `go`), and get a complete project: CI/CD, docs site, releases, and git hooks — pushed to GitHub.
+Scaffolds production-ready CLI projects from language templates. Invoke `/create-cli`, pick a template (`go` or `python`), and get a complete project: CI/CD, docs site, releases, and git hooks — pushed to GitHub.
 
 ```
 /create-cli
