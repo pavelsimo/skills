@@ -20,7 +20,10 @@ A skill for agents that scaffolds production-ready CLI projects from language te
 
 The skill asks for a name and description, shows you a CLI design spec to review, then generates the full project on GitHub.
 
-## What Gets Created (go template)
+## Go Template
+
+<details>
+<summary>Files generated</summary>
 
 | File / Directory | Purpose |
 |---|---|
@@ -37,7 +40,12 @@ The skill asks for a name and description, shows you a CLI design spec to review
 | `.github/workflows/release.yml` | Release: goreleaser + Homebrew tap dispatch on tag push |
 | `.github/workflows/pages.yml` | Docs deploy to GitHub Pages on `docs/**` changes |
 
-## What Gets Created (python template)
+</details>
+
+## Python Template
+
+<details>
+<summary>Files generated</summary>
 
 | File / Directory | Purpose |
 |---|---|
@@ -54,6 +62,8 @@ The skill asks for a name and description, shows you a CLI design spec to review
 | `.github/workflows/ci.yml` | CI: ruff + mypy + pytest on every push/PR |
 | `.github/workflows/release.yml` | Release: PyPI OIDC + GitHub Release + Homebrew tap on tag push |
 | `.github/workflows/pages.yml` | Docs deploy to GitHub Pages on `docs/**` changes |
+
+</details>
 
 ## Template Variables
 
