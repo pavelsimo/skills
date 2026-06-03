@@ -31,6 +31,7 @@ npx skills@latest add pavelsimo/skills
 <tr><td><a href="https://github.com/pavelsimo/create-html">create-html</a></td><td>Transform any document (PDF, DOCX, PPTX, Markdown, text) into a polished HTML file by auto-selecting from 20 purpose-built presentation templates</td></tr>
 <tr><td><a href="https://github.com/pavelsimo/create-issue">create-issue</a></td><td>Turn a rough description into a structured GitHub issue with gitmoji title, problem statement, acceptance criteria, and technical notes — with an optional interview mode that reads the codebase first</td></tr>
 <tr><td><a href="https://github.com/pavelsimo/refine-issue">refine-issue</a></td><td>Fetch an existing GitHub issue by number, rewrite it to a consistent template with gitmoji title and structured sections, and update it in-place via gh</td></tr>
+<tr><td><a href="https://github.com/pavelsimo/deep-learn">deep-learn</a></td><td>Run an interactive, mastery-gated tutoring session on one topic — a running comprehension checklist, layered explanations, and AskUserQuestion quizzes — until the problem, the solution, and why it matters are all understood</td></tr>
 </tbody>
 </table>
 
@@ -252,4 +253,16 @@ Fetches an existing GitHub issue by number, rewrites it to the same structured t
 /refine-issue 42                     # fetch, rewrite, confirm, update
 /refine-issue 42 --dry-run           # show rewritten issue without posting
 /refine-issue 42 --repo owner/repo   # target a specific repo
+```
+
+---
+
+### [deep-learn](https://github.com/pavelsimo/deep-learn)
+
+Runs an interactive, mastery-gated tutoring session on a single topic. Claude acts as a patient expert teacher: it builds a running comprehension checklist across three pillars (the problem, the solution, the broader context), elicits what the learner already knows, fills gaps with layered explanations (`eli5` / `eli14` / `elii`), and quizzes via `AskUserQuestion` with randomized answer order. The session does not end until every checklist item is verified.
+
+```
+/deep-learn <topic>              # start a session on a specific topic
+/deep-learn <file|PR|concept>    # learn a code change, file, or concept
+/deep-learn --resume             # continue from an existing checklist doc
 ```

@@ -34,6 +34,7 @@ SKILLS=(
   "create-html https://github.com/pavelsimo/create-html.git master"
   "create-issue https://github.com/pavelsimo/create-issue.git master"
   "refine-issue https://github.com/pavelsimo/refine-issue.git master"
+  "deep-learn https://github.com/pavelsimo/deep-learn.git master"
 )
 
 for entry in "${SKILLS[@]}"; do
