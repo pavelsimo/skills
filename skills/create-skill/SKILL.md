@@ -11,7 +11,7 @@ A Claude Code skill that scaffolds a new agent skill from a plain-text descripti
 ## features
 
 - generates SKILL.md (frontmatter + features + usage + workflow + best practices) from the user's description
-- produces a README.md matching the standard skill template (usage, installation for Claude Code / Codex / Copilot, license)
+- produces a README.md matching the standard skill template (usage, installation via `npx skills@latest add`, license)
 - writes an MIT LICENSE with the current year and "Pavel Simo" as the copyright holder
 - initializes a git repo and makes the first 🎉 init commit
 - creates a public GitHub repo via `gh` cli
@@ -59,10 +59,7 @@ A Claude Code skill that scaffolds a new agent skill from a plain-text descripti
    - `# <name> skill` title + one-sentence description
    - `## Usage` — copy the usage block from SKILL.md
    - one skill-specific section (e.g., output format, examples, what it produces) inferred from the description
-   - `## Installation` with three collapsible `<details>` sections:
-     - **Claude Code**: `cp SKILL.md .claude/commands/<name>.md` (project) or `~/.claude/commands/<name>.md` (global); invoke: `/<name>`
-     - **OpenAI Codex**: append to `AGENTS.md` or `~/.codex/instructions.md`; invoke: `codex "<natural language request>"`
-     - **GitHub Copilot**: append to `.github/copilot-instructions.md`; invoke: open Copilot Chat and describe the task
+   - `## Installation` — single bash code block: `npx skills@latest add pavelsimo/<name>`
    - `## Contributing` — "open an issue or pull request. keep commits atomic."
    - `## License` — "MIT"
 
