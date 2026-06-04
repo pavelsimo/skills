@@ -1,0 +1,33 @@
+source "https://rubygems.org"
+
+ruby file: ".ruby-version"
+
+gem "rails", "~> 8.0"
+gem "propshaft"                    # Modern asset pipeline (no Sprockets)
+gem "puma", ">= 5.0"              # Production web server
+gem "importmap-rails"              # JavaScript without Node.js bundler
+gem "turbo-rails"                  # Hotwire Turbo (no SPA needed)
+gem "stimulus-rails"               # Hotwire Stimulus (modest JS)
+gem "solid_cache"                  # Database-backed caching (no Redis)
+gem "solid_queue"                  # Database-backed jobs (no Sidekiq)
+gem "solid_cable"                  # Database-backed WebSockets (no Redis)
+gem "kamal", require: false        # Container deployment
+gem "thruster", require: false     # HTTP/2 + security headers + asset compression
+gem "bcrypt", "~> 3.1.7"          # Secure password digests
+gem "image_processing", "~> 1.2"  # ActiveStorage image variants
+
+group :development, :test do
+  gem "debug", platforms: %i[mri windows], require: "debug/prelude"
+  gem "brakeman", require: false   # Static security analysis
+end
+
+group :development do
+  gem "web-console"
+  gem "lefthook"                   # Git hooks runner
+  gem "rubocop-rails-omakase", require: false  # 37signals code style
+end
+
+group :test do
+  gem "capybara"
+  gem "selenium-webdriver"
+end

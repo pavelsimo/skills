@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Load .env if present (development secrets, never commit .env)
+[ -f .env ] && export $(grep -v '^#' .env | xargs)
+
+if command -v overmind &>/dev/null; then
+  exec overmind start -f Procfile.dev "$@"
+elif command -v foreman &>/dev/null; then
+  exec foreman start -f Procfile.dev "$@"
+else
+  echo "Installing foreman..."
+  gem install foreman
+  exec foreman start -f Procfile.dev "$@"
+fi

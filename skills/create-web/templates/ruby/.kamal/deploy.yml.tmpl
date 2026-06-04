@@ -1,0 +1,36 @@
+service: {{APP_NAME}}
+image: {{GITHUB_USER}}/{{APP_NAME}}
+
+servers:
+  web:
+    hosts:
+      - YOUR_SERVER_IP    # replace with your server's IP address
+
+proxy:
+  ssl: true
+  host: your-domain.com   # replace with your domain name
+
+registry:
+  server: ghcr.io
+  username: {{GITHUB_USER}}
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+env:
+  secret:
+    - RAILS_MASTER_KEY
+  clear:
+    RAILS_ENV: production
+    SOLID_QUEUE_IN_PUMA: true
+
+volumes:
+  - {{APP_MODULE}}_storage:/rails/storage
+
+builder:
+  multiarch: false
+
+healthcheck:
+  path: /up
+  port: 3000
+  max_attempts: 10
+  interval: 20s

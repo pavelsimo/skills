@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -e
+
+cd "$(dirname "$0")/.."
+
+echo "==> Installing gems..."
+bundle install
+
+echo "==> Preparing database..."
+bin/rails db:prepare
+
+echo "==> Installing git hooks..."
+bundle exec lefthook install
+
+echo ""
+echo "✅ Setup complete!"
+echo ""
+echo "  bin/dev              → start development server"
+echo "  bin/rails test       → run tests"
+echo "  make lint            → run rubocop"
+echo "  open http://localhost:3000"

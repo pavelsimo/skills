@@ -22,6 +22,7 @@ npx skills@latest add pavelsimo/skills
 <tr><td><a href="skills/create-html">create-html</a></td><td>Transform any document (PDF, DOCX, PPTX, Markdown, text) into a polished HTML file by auto-selecting from 20 purpose-built presentation templates</td></tr>
 <tr><td><a href="skills/create-issue">create-issue</a></td><td>Turn a rough description into a structured GitHub issue with gitmoji title, problem statement, acceptance criteria, and technical notes — with an optional interview mode that reads the codebase first</td></tr>
 <tr><td><a href="skills/create-skill">create-skill</a></td><td>Bootstrap a new agent skill (SKILL.md, README, LICENSE) as a directory in this repo and register it in the index</td></tr>
+<tr><td><a href="skills/create-web">create-web</a></td><td>Scaffold production-ready web applications from language templates — Ruby on Rails 8.x (37signals style: magic-link auth, Hotwire, Solid Queue/Cache/Cable, native CSS, Minitest, Kamal)</td></tr>
 <tr><td><a href="skills/deep-learn">deep-learn</a></td><td>Run an interactive, mastery-gated tutoring session on one topic — a running comprehension checklist, layered explanations, and AskUserQuestion quizzes — until the problem, the solution, and why it matters are all understood</td></tr>
 <tr><td><a href="skills/humanize">humanize</a></td><td>Remove AI writing patterns and make text sound natural and human</td></tr>
 <tr><td><a href="skills/markdown">markdown</a></td><td>Convert files and URLs to clean Markdown using markitdown via uvx — no installation required</td></tr>
@@ -124,6 +125,17 @@ Scaffolds a new agent skill from a plain-text description. Generates SKILL.md, R
 ```
 /create-skill                    # prompt for name and description
 /create-skill <name>             # prompt for description only
+```
+
+---
+
+### [create-web](skills/create-web)
+
+Scaffolds a production-ready web application. The first template is Ruby on Rails 8.x, built the way 37signals builds Basecamp and Hey: passwordless magic-link auth, Hotwire frontend, Solid Queue/Cache/Cable (no Redis), native CSS with cascade layers, Minitest with fixtures, and Kamal container deployment — all pre-wired and ready to ship.
+
+```
+/create-web
+/create-web name=my-app template=ruby database=mysql
 ```
 
 ---

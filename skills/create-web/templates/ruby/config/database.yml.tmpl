@@ -1,0 +1,41 @@
+<%
+  adapter = ENV.fetch("DATABASE_ADAPTER", "{{DATABASE}}")
+  mysql   = adapter.start_with?("mysql")
+%>
+
+default: &default
+  adapter: <%= adapter %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+<% if mysql %>
+  encoding: utf8mb4
+  username: <%= ENV.fetch("DB_USERNAME", "root") %>
+  password: <%= ENV["DB_PASSWORD"] %>
+  host:     <%= ENV.fetch("DB_HOST", "localhost") %>
+  port:     <%= ENV.fetch("DB_PORT", 3306) %>
+<% else %>
+  timeout: 5000
+<% end %>
+
+development:
+  <<: *default
+<% if mysql %>
+  database: {{APP_MODULE}}_development
+<% else %>
+  database: storage/development.sqlite3
+<% end %>
+
+test:
+  <<: *default
+<% if mysql %>
+  database: {{APP_MODULE}}_test
+<% else %>
+  database: storage/test.sqlite3
+<% end %>
+
+production:
+  <<: *default
+<% if mysql %>
+  database: {{APP_MODULE}}_production
+<% else %>
+  database: storage/production.sqlite3
+<% end %>

@@ -1,0 +1,49 @@
+# Ignore bundler config
+/.bundle
+
+# Ignore environment files
+/.env*
+!/.env.example
+
+# Ignore Kamal secrets (contains real credentials)
+.kamal/secrets
+
+# Ignore SQLite storage databases
+/storage/*.sqlite3
+/storage/*.sqlite3-*
+/storage/*.sqlite3-shm
+/storage/*.sqlite3-wal
+
+# Ignore temp and log files
+/tmp/
+/log/*
+!/log/.keep
+
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
+
+# Ignore compiled assets
+/public/assets
+
+# Ignore pidfiles
+/tmp/pids/*
+!/tmp/pids/.keep
+
+# Ignore node_modules if ever added
+/node_modules/
+
+# Ignore coverage reports
+/coverage/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editors
+*.swp
+*.swo
+.idea/
+.vscode/
+*.iml
