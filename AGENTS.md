@@ -32,8 +32,9 @@ npx skills@latest add pavelsimo/skills
 ## How skills are tracked
 
 Each skill is a plain directory under `skills/` committed as ordinary files — **not**
-a git submodule and **not** a clone. Each skill directory contains exactly three files:
-`SKILL.md`, `README.md`, and `LICENSE`.
+a git submodule and **not** a clone. Each skill directory contains at minimum
+`SKILL.md`, `README.md`, and `LICENSE`. Some also include a `CHANGELOG.md` or
+additional files (e.g., templates).
 
 Do not run `git submodule add`. Do not leave a nested `.git` directory inside
 `skills/<name>/` — it makes git treat the directory as an embedded repo and refuse to
@@ -47,7 +48,7 @@ The `/create-skill` skill automates all of this. To do it by hand:
 
 ### 1. Create the skill directory
 
-Create `skills/<name>/` (kebab-case: `[a-z0-9-]`, no spaces or uppercase) with exactly three files:
+Create `skills/<name>/` (kebab-case: `[a-z0-9-]`, no spaces or uppercase) with at minimum these three files:
 
 - `SKILL.md` — frontmatter (`name`, `description`, `trigger: /<name>`) + `## features`, `## usage`, `## workflow`, `## best practices`
 - `README.md` — title, `## Usage`, a skill-specific section, `## Installation` (`npx skills@latest add pavelsimo/skills`), `## Contributing`, `## License`
