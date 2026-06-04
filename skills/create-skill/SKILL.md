@@ -83,11 +83,11 @@ plus a table row and a `### [<name>](skills/<name>)` detail section appended to 
    ```
 
 9. register in the index `README.md`:
-   - add a row to the existing HTML skills table:
+   - add a row to the existing HTML skills table, **in alphabetical position** by skill name (the table is kept sorted):
      ```
      <tr><td><a href="skills/<name>"><name></a></td><td><one-line description></td></tr>
      ```
-   - append a detailed section at the bottom of the file:
+   - insert a matching detailed section **in alphabetical position** among the existing `###` sections (the sections are kept sorted):
      ```
      ### [<name>](skills/<name>)
 
@@ -116,5 +116,5 @@ plus a table row and a `### [<name>](skills/<name>)` detail section appended to 
 - **show drafts before writing** — always show generated files and wait for confirmation; never write to disk without approval
 - **exactly three files per skill** — `SKILL.md`, `README.md`, `LICENSE`; never leave a nested `.git` directory inside the skill folder and never add it as a submodule
 - **one atomic commit** — a single `➕ add <name> skill` commit covering the new directory and the README index update
-- **preserve README.md structure** — insert the table row inside the existing `<table>`; add the detailed `###` section at the bottom; link to `skills/<name>`, never an external repo
+- **preserve README.md structure** — insert the table row and the detailed `###` section in **alphabetical position** (both lists are kept sorted by skill name); link to `skills/<name>`, never an external repo
 - **derive the year dynamically** — run `date +%Y` rather than hardcoding the current year in the LICENSE

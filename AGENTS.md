@@ -55,8 +55,8 @@ Create `skills/<name>/` (kebab-case: `[a-z0-9-]`, no spaces or uppercase) with e
 
 ### 2. Register in `README.md`
 
-- Add a `<tr>` row to the HTML table: `<tr><td><a href="skills/<name>"><name></a></td><td><description></td></tr>`
-- Add a `### [<name>](skills/<name>)` detail section at the bottom, following the existing style (one-paragraph summary + a fenced usage block).
+- Add a `<tr>` row to the HTML table in alphabetical position (rows are sorted by skill name): `<tr><td><a href="skills/<name>"><name></a></td><td><description></td></tr>`
+- Add a `### [<name>](skills/<name>)` detail section in the same alphabetical position, following the existing style (one-paragraph summary + a fenced usage block).
 
 Links point to the in-repo directory (`skills/<name>`), never to an external repo.
 
