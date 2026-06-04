@@ -101,14 +101,14 @@ Execute in order:
      - `{{DATABASE}}` → `{database}` (value: `sqlite3` for sqlite, `mysql2` for mysql)
      - `{{YEAR}}` → current year
    - Strip `.tmpl` extension from all `*.tmpl` files after substitution
-   - Make bin scripts executable: `chmod +x bin/setup bin/dev bin/ci bin/docker-entrypoint`
+   - Make all bin scripts executable: `chmod +x bin/*`
 
 3. **Install dependencies:**
    ```bash
    bundle install
    ```
 
-4. **Prepare database:**
+4. **Prepare database (runs db:create + db:migrate + db:seed):**
    ```bash
    bin/rails db:prepare
    ```
@@ -153,6 +153,7 @@ Next steps:
 Documentation:
   docs/development.md            # local setup guide
   docs/deployment.md             # Kamal deployment guide
+  config/deploy.yml              # Kamal deployment config — fill in your server IP and domain
   AGENTS.md                      # AI agent conventions (← CLAUDE.md)
 ```
 

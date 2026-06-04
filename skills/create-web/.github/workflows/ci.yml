@@ -49,6 +49,7 @@ jobs:
           python3 - <<'EOF'
           import os, sys
           required_files = [
+              # Skill-level files
               "templates/ruby/Gemfile.tmpl",
               "templates/ruby/.ruby-version.tmpl",
               "templates/ruby/.rubocop.yml",
@@ -56,19 +57,31 @@ jobs:
               "templates/ruby/Makefile",
               "templates/ruby/Dockerfile.tmpl",
               "templates/ruby/AGENTS.md.tmpl",
+              "templates/ruby/Rakefile",
+              # Critical Rails boot files
+              "templates/ruby/config/boot.rb",
+              "templates/ruby/config/environment.rb",
+              "templates/ruby/config.ru",
+              # App models
               "templates/ruby/app/models/application_record.rb.tmpl",
               "templates/ruby/app/models/current.rb.tmpl",
               "templates/ruby/app/models/identity.rb.tmpl",
               "templates/ruby/app/models/session.rb.tmpl",
               "templates/ruby/app/models/user.rb.tmpl",
+              # App controllers
               "templates/ruby/app/controllers/application_controller.rb.tmpl",
               "templates/ruby/app/controllers/concerns/authentication.rb.tmpl",
               "templates/ruby/app/controllers/sessions_controller.rb.tmpl",
+              # Config
               "templates/ruby/config/application.rb.tmpl",
               "templates/ruby/config/routes.rb.tmpl",
               "templates/ruby/config/database.yml.tmpl",
+              "templates/ruby/config/deploy.yml.tmpl",
+              "templates/ruby/config/puma.rb.tmpl",
+              "templates/ruby/config/ci.rb",
+              # CI/CD
               "templates/ruby/.github/workflows/ci.yml",
-              "templates/ruby/.kamal/deploy.yml.tmpl",
+              "templates/ruby/.github/workflows/deploy.yml",
           ]
           errors = []
           for f in required_files:

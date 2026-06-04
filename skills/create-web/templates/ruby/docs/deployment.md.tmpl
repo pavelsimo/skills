@@ -13,17 +13,16 @@ This app deploys with [Kamal](https://kamal-deploy.org/) — Docker-based, zero-
 
 ### 1. Configure your server and domain
 
-Edit `.kamal/deploy.yml`:
+Edit `config/deploy.yml`:
 
 ```yaml
 servers:
   web:
-    hosts:
-      - 1.2.3.4              # your server IP
+    - 1.2.3.4              # your server IP
 
-proxy:
-  ssl: true
-  host: my-app.example.com  # your domain
+# proxy:                   # uncomment to enable SSL
+#   ssl: true
+#   host: my-app.example.com  # your domain
 ```
 
 ### 2. Set secrets
