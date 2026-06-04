@@ -35,7 +35,7 @@ The assistant will invoke `uvx markitdown` with the right flags and return the r
 ## Installation
 
 ```bash
-npx skills@latest add pavelsimo/markdown
+npx skills@latest add pavelsimo/skills
 ```
 
 ## Notes

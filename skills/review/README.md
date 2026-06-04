@@ -71,7 +71,7 @@ By default the skill is strictly read-only:
 ## Installation
 
 ```bash
-npx skills@latest add pavelsimo/review
+npx skills@latest add pavelsimo/skills
 ```
 
 ## Contributing

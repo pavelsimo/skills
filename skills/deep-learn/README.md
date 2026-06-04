@@ -42,7 +42,7 @@ Ask for any explanation level at any time:
 ## Installation
 
 ```bash
-npx skills@latest add pavelsimo/deep-learn
+npx skills@latest add pavelsimo/skills
 ```
 
 ## Contributing

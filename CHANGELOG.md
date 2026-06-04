@@ -16,5 +16,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - sort skills index with release listed after commit and changelog
+- consolidate all skills into the single `pavelsimo/skills` repo; index links now point to in-repo `skills/<name>` directories
+- rewrite `/create-skill` to add a skill directory to this repo instead of creating a separate GitHub repo
+
+### Removed
+- per-skill remote repository links (the individual `pavelsimo/<skill>` repos no longer exist)
+- `scripts/sync.sh` and `scripts/link.sh` helper scripts
 
 [Unreleased]: https://github.com/pavelsimo/skills/commits/HEAD

@@ -26,7 +26,7 @@ Turns a rough description into a structured GitHub issue — gitmoji title, prob
 ## Installation
 
 ```bash
-npx skills@latest add pavelsimo/create-issue
+npx skills@latest add pavelsimo/skills
 ```
 
 ## Contributing

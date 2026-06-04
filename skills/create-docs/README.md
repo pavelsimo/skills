@@ -37,7 +37,7 @@ By default, existing docs are **refreshed** (re-analyzed and rewritten with a ne
 ## Installation
 
 ```bash
-npx skills@latest add pavelsimo/create-docs
+npx skills@latest add pavelsimo/skills
 ```
 
 ## Contributing

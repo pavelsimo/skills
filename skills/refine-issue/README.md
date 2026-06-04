@@ -22,7 +22,7 @@ Fetches an existing GitHub issue by number, rewrites it to a consistent template
 ## Installation
 
 ```bash
-npx skills@latest add pavelsimo/refine-issue
+npx skills@latest add pavelsimo/skills
 ```
 
 ## Contributing

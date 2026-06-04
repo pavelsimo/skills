@@ -1,19 +1,17 @@
-# AGENTS.md — Skills Index Maintenance Guide
+# AGENTS.md — Skills Repo Maintenance Guide
 
-This file documents how to correctly update the `pavelsimo/skills` index. Read it before making any changes.
+This file documents how to correctly maintain the `pavelsimo/skills` repo. Read it before making any changes.
 
 ---
 
 ## Repo structure
 
 ```
-skills/                  # this repo (pavelsimo/skills)
+skills/                  # this repo (pavelsimo/skills) — the single source for all skills
 ├── README.md            # the public index: HTML table + ### detail sections
 ├── AGENTS.md            # this file
-├── scripts/
-│   ├── sync.sh          # clones/updates skill repos into skills/
-│   └── link.sh          # symlinks SKILL.md files into ~/.claude/commands/
-└── skills/              # skill directories committed as plain files
+├── CHANGELOG.md
+└── skills/              # one directory per skill
     ├── commit/
     │   ├── SKILL.md
     │   ├── README.md
@@ -22,58 +20,50 @@ skills/                  # this repo (pavelsimo/skills)
     └── ...
 ```
 
+`pavelsimo/skills` is the **only** repo for these skills — there are no separate
+per-skill repos. Skills are installed with:
+
+```bash
+npx skills@latest add pavelsimo/skills
+```
+
 ---
 
-## How skill directories are tracked
+## How skills are tracked
 
-Skill directories under `skills/` are **plain committed files** — not git submodules. Each skill directory contains exactly three files: `SKILL.md`, `README.md`, and `LICENSE`.
+Each skill is a plain directory under `skills/` committed as ordinary files — **not**
+a git submodule and **not** a clone. Each skill directory contains exactly three files:
+`SKILL.md`, `README.md`, and `LICENSE`.
 
-Do not run `git submodule add`. Do not leave `.git` directories inside `skills/<name>/`.
+Do not run `git submodule add`. Do not leave a nested `.git` directory inside
+`skills/<name>/` — it makes git treat the directory as an embedded repo and refuse to
+track its files.
 
 ---
 
 ## Adding a new skill
 
-Follow these steps in order. Skipping any step is the source of every past mistake.
+The `/create-skill` skill automates all of this. To do it by hand:
 
-### 1. Check the default branch
+### 1. Create the skill directory
 
-```bash
-gh repo view pavelsimo/<name> --json defaultBranchRef --jq '.defaultBranchRef.name'
-```
+Create `skills/<name>/` (kebab-case: `[a-z0-9-]`, no spaces or uppercase) with exactly three files:
 
-It will be `main` or `master`. Use the actual value in the next step — do not assume `main`.
+- `SKILL.md` — frontmatter (`name`, `description`, `trigger: /<name>`) + `## features`, `## usage`, `## workflow`, `## best practices`
+- `README.md` — title, `## Usage`, a skill-specific section, `## Installation` (`npx skills@latest add pavelsimo/skills`), `## Contributing`, `## License`
+- `LICENSE` — MIT, current year (`date +%Y`), "Pavel Simo"
 
-### 2. Add the entry to `scripts/sync.sh`
+### 2. Register in `README.md`
 
-Open `scripts/sync.sh` and append a line to the `SKILLS` array:
+- Add a `<tr>` row to the HTML table: `<tr><td><a href="skills/<name>"><name></a></td><td><description></td></tr>`
+- Add a `### [<name>](skills/<name>)` detail section at the bottom, following the existing style (one-paragraph summary + a fenced usage block).
 
-```bash
-"<name> https://github.com/pavelsimo/<name>.git <branch>"
-```
+Links point to the in-repo directory (`skills/<name>`), never to an external repo.
 
-### 3. Add the entry to `README.md`
-
-Add a `<tr>` row to the HTML table and a `###` detail section at the bottom, following the existing style.
-
-### 4. Clone the skill
+### 3. Commit
 
 ```bash
-bash scripts/sync.sh --skill <name>
-```
-
-### 5. Remove the nested `.git` directory
-
-This is the critical step. The clone leaves a `.git` dir inside `skills/<name>/`, which makes git treat it as a nested repo and refuse to stage it.
-
-```bash
-rm -rf skills/<name>/.git skills/<name>/.gitignore
-```
-
-### 6. Stage, commit, and push
-
-```bash
-git add skills/<name> scripts/sync.sh README.md
+git add skills/<name> README.md
 git commit -m "➕ add <name> skill"
 git push
 ```
@@ -84,31 +74,6 @@ git push
 
 | Mistake | Symptom | Fix |
 |---------|---------|-----|
-| Forgot to add skill to `sync.sh` | Running `sync.sh --update-readme` silently drops the skill from README | Always update `sync.sh` and `README.md` together |
-| Left `.git` inside `skills/<name>/` | Folder shows as "Untracked" in `git status`, never gets committed, missing from GitHub | `rm -rf skills/<name>/.git` before staging |
-| Wrong branch in `sync.sh` | Clone fails with "Remote branch main not found" | Check with `gh repo view` first (step 1 above) |
-
----
-
-## Scripts reference
-
-### `scripts/sync.sh`
-
-Clones or updates skill repos into `skills/`.
-
-```
-bash scripts/sync.sh                        # sync all skills
-bash scripts/sync.sh --skill <name>         # sync one skill only
-bash scripts/sync.sh --update-readme        # sync all, then regenerate README via Claude
-```
-
-After running, always remove `.git` dirs from any newly cloned skills before committing (see step 5 above).
-
-### `scripts/link.sh`
-
-Symlinks each `SKILL.md` into `~/.claude/commands/` so skills are available as `/skill-name` in Claude Code. Run this after installing or updating skills locally.
-
-```
-bash scripts/link.sh            # link all skills
-bash scripts/link.sh --dry-run  # preview without creating symlinks
-```
+| Left a `.git` inside `skills/<name>/` | Folder shows as "Untracked" in `git status`, never gets committed | `rm -rf skills/<name>/.git` before staging |
+| Forgot the README entry | Skill is committed but missing from the public index | Always update `README.md` (table row + detail section) when adding a skill |
+| Linked to `github.com/pavelsimo/<name>` | Dead link — per-skill repos no longer exist | Link to the in-repo directory `skills/<name>` |

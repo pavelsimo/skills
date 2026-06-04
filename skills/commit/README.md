@@ -45,7 +45,7 @@ the upstream fix landed in that release and covers all the edge cases we patched
 ## Installation
 
 ```bash
-npx skills@latest add pavelsimo/commit
+npx skills@latest add pavelsimo/skills
 ```
 
 ## Gitmoji Reference

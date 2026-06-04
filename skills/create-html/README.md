@@ -49,7 +49,7 @@ Template taxonomy inspired by [HTML Effectiveness](https://thariqs.github.io/htm
 ## Installation
 
 ```bash
-npx skills@latest add pavelsimo/create-html
+npx skills@latest add pavelsimo/skills
 ```
 
 ## Contributing

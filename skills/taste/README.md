@@ -55,7 +55,7 @@ Input accepts GitHub shorthands, full URLs, and local paths — mixed freely:
 ## Installation
 
 ```bash
-npx skills@latest add pavelsimo/taste
+npx skills@latest add pavelsimo/skills
 ```
 
 ## How It Works

@@ -15,7 +15,7 @@ A skill for agents that scaffolds production-ready CLI projects from language te
 ## Installation
 
 ```bash
-npx skills@latest add pavelsimo/create-cli
+npx skills@latest add pavelsimo/skills
 ```
 
 ## Usage

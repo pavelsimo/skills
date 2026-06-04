@@ -43,7 +43,7 @@ The assistant reads the sample, notes your sentence length, word choice, punctua
 ## Installation
 
 ```bash
-npx skills@latest add pavelsimo/humanize
+npx skills@latest add pavelsimo/skills
 ```
 
 ## Attribution

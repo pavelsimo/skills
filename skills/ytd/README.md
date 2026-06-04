@@ -48,7 +48,7 @@ Prefers manual subtitles; falls back to auto-generated captions. If the requeste
 ## Installation
 
 ```bash
-npx skills@latest add pavelsimo/ytd
+npx skills@latest add pavelsimo/skills
 ```
 
 ## Dependencies

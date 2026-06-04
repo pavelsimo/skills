@@ -41,7 +41,7 @@ Every mode produces beautifully formatted output with score emojis (🔥 ⭐ �
 ## Installation
 
 ```bash
-npx skills@latest add pavelsimo/search-anime
+npx skills@latest add pavelsimo/skills
 ```
 
 ## Contributing

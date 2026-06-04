@@ -15,29 +15,29 @@ npx skills@latest add pavelsimo/skills
 <tr><th width="140">Skill</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="https://github.com/pavelsimo/changelog">changelog</a></td><td>Generate changelog entries from git history following Keep a Changelog conventions and manage versioned releases</td></tr>
-<tr><td><a href="https://github.com/pavelsimo/commit">commit</a></td><td>Generate conventional git commits with gitmoji prefix and lowercase message style</td></tr>
-<tr><td><a href="https://github.com/pavelsimo/create-cli">create-cli</a></td><td>Scaffold production-ready CLI projects from language templates — Go (Cobra, goreleaser, GitHub Pages) and Python (Typer, uv, ruff+mypy, PyPI OIDC publishing, GitHub Pages)</td></tr>
-<tr><td><a href="https://github.com/pavelsimo/markdown">markdown</a></td><td>Convert files and URLs to clean Markdown using markitdown via uvx — no installation required</td></tr>
-<tr><td><a href="https://github.com/pavelsimo/mermaid">mermaid</a></td><td>Generate Mermaid diagrams from source files, schemas, or plain-text descriptions with automatic or manual diagram type selection</td></tr>
-<tr><td><a href="https://github.com/pavelsimo/release">release</a></td><td>Cut a full versioned release in one step: updates <code>CHANGELOG.md</code>, commits it, creates an annotated git tag, and pushes everything to remote</td></tr>
-<tr><td><a href="https://github.com/pavelsimo/taste">taste</a></td><td>Analyze repositories to extract shared engineering conventions, style guidelines, and anti-patterns</td></tr>
-<tr><td><a href="https://github.com/pavelsimo/review">review</a></td><td>Perform deep, evidence-first code review on local diffs, staged changes, branch comparisons, or GitHub PRs and issues</td></tr>
-<tr><td><a href="https://github.com/pavelsimo/humanize">humanize</a></td><td>Remove AI writing patterns and make text sound natural and human</td></tr>
-<tr><td><a href="https://github.com/pavelsimo/ytd">ytd</a></td><td>Download YouTube videos, audio, or transcripts from the command line with quality and language controls</td></tr>
-<tr><td><a href="https://github.com/pavelsimo/create-skill">create-skill</a></td><td>Bootstrap a new agent skill with files, GitHub repo, and skills index registration</td></tr>
-<tr><td><a href="https://github.com/pavelsimo/create-docs">create-docs</a></td><td>Analyze a codebase and generate or refresh LLM-optimized documentation in docs/ or a custom directory</td></tr>
-<tr><td><a href="https://github.com/pavelsimo/search-anime">search-anime</a></td><td>Search anime and manga using the ani CLI</td></tr>
-<tr><td><a href="https://github.com/pavelsimo/create-html">create-html</a></td><td>Transform any document (PDF, DOCX, PPTX, Markdown, text) into a polished HTML file by auto-selecting from 20 purpose-built presentation templates</td></tr>
-<tr><td><a href="https://github.com/pavelsimo/create-issue">create-issue</a></td><td>Turn a rough description into a structured GitHub issue with gitmoji title, problem statement, acceptance criteria, and technical notes — with an optional interview mode that reads the codebase first</td></tr>
-<tr><td><a href="https://github.com/pavelsimo/refine-issue">refine-issue</a></td><td>Fetch an existing GitHub issue by number, rewrite it to a consistent template with gitmoji title and structured sections, and update it in-place via gh</td></tr>
-<tr><td><a href="https://github.com/pavelsimo/deep-learn">deep-learn</a></td><td>Run an interactive, mastery-gated tutoring session on one topic — a running comprehension checklist, layered explanations, and AskUserQuestion quizzes — until the problem, the solution, and why it matters are all understood</td></tr>
+<tr><td><a href="skills/changelog">changelog</a></td><td>Generate changelog entries from git history following Keep a Changelog conventions and manage versioned releases</td></tr>
+<tr><td><a href="skills/commit">commit</a></td><td>Generate conventional git commits with gitmoji prefix and lowercase message style</td></tr>
+<tr><td><a href="skills/create-cli">create-cli</a></td><td>Scaffold production-ready CLI projects from language templates — Go (Cobra, goreleaser, GitHub Pages) and Python (Typer, uv, ruff+mypy, PyPI OIDC publishing, GitHub Pages)</td></tr>
+<tr><td><a href="skills/markdown">markdown</a></td><td>Convert files and URLs to clean Markdown using markitdown via uvx — no installation required</td></tr>
+<tr><td><a href="skills/mermaid">mermaid</a></td><td>Generate Mermaid diagrams from source files, schemas, or plain-text descriptions with automatic or manual diagram type selection</td></tr>
+<tr><td><a href="skills/release">release</a></td><td>Cut a full versioned release in one step: updates <code>CHANGELOG.md</code>, commits it, creates an annotated git tag, and pushes everything to remote</td></tr>
+<tr><td><a href="skills/taste">taste</a></td><td>Analyze repositories to extract shared engineering conventions, style guidelines, and anti-patterns</td></tr>
+<tr><td><a href="skills/review">review</a></td><td>Perform deep, evidence-first code review on local diffs, staged changes, branch comparisons, or GitHub PRs and issues</td></tr>
+<tr><td><a href="skills/humanize">humanize</a></td><td>Remove AI writing patterns and make text sound natural and human</td></tr>
+<tr><td><a href="skills/ytd">ytd</a></td><td>Download YouTube videos, audio, or transcripts from the command line with quality and language controls</td></tr>
+<tr><td><a href="skills/create-skill">create-skill</a></td><td>Bootstrap a new agent skill (SKILL.md, README, LICENSE) as a directory in this repo and register it in the index</td></tr>
+<tr><td><a href="skills/create-docs">create-docs</a></td><td>Analyze a codebase and generate or refresh LLM-optimized documentation in docs/ or a custom directory</td></tr>
+<tr><td><a href="skills/search-anime">search-anime</a></td><td>Search anime and manga using the ani CLI</td></tr>
+<tr><td><a href="skills/create-html">create-html</a></td><td>Transform any document (PDF, DOCX, PPTX, Markdown, text) into a polished HTML file by auto-selecting from 20 purpose-built presentation templates</td></tr>
+<tr><td><a href="skills/create-issue">create-issue</a></td><td>Turn a rough description into a structured GitHub issue with gitmoji title, problem statement, acceptance criteria, and technical notes — with an optional interview mode that reads the codebase first</td></tr>
+<tr><td><a href="skills/refine-issue">refine-issue</a></td><td>Fetch an existing GitHub issue by number, rewrite it to a consistent template with gitmoji title and structured sections, and update it in-place via gh</td></tr>
+<tr><td><a href="skills/deep-learn">deep-learn</a></td><td>Run an interactive, mastery-gated tutoring session on one topic — a running comprehension checklist, layered explanations, and AskUserQuestion quizzes — until the problem, the solution, and why it matters are all understood</td></tr>
 </tbody>
 </table>
 
 ---
 
-### [commit](https://github.com/pavelsimo/commit)
+### [commit](skills/commit)
 
 Analyzes staged changes and produces clean, atomic commits with gitmoji symbols and a lowercase imperative message.
 
@@ -55,7 +55,7 @@ Examples:
 
 ---
 
-### [create-cli](https://github.com/pavelsimo/create-cli)
+### [create-cli](skills/create-cli)
 
 Scaffolds production-ready CLI projects from language templates. Invoke `/create-cli`, pick a template (`go` or `python`), and get a complete project: CI/CD, docs site, releases, and git hooks — pushed to GitHub.
 
@@ -65,7 +65,7 @@ Scaffolds production-ready CLI projects from language templates. Invoke `/create
 
 ---
 
-### [markdown](https://github.com/pavelsimo/markdown)
+### [markdown](skills/markdown)
 
 Converts files and URLs to clean Markdown using [markitdown](https://github.com/microsoft/markitdown) via `uvx` — no installation required.
 
@@ -79,7 +79,7 @@ Supports PDF, Word, PowerPoint, Excel, HTML, CSV, JSON, XML, images, audio, ZIP 
 
 ---
 
-### [changelog](https://github.com/pavelsimo/changelog)
+### [changelog](skills/changelog)
 
 Reads git history and translates commits into user-friendly changelog entries organized by type (Added, Changed, Fixed, etc.) with semantic versioning support.
 
@@ -92,7 +92,7 @@ Reads git history and translates commits into user-friendly changelog entries or
 
 ---
 
-### [release](https://github.com/pavelsimo/release)
+### [release](skills/release)
 
 Cuts a full versioned release in one step: promotes the `[Unreleased]` section in `CHANGELOG.md` to a dated release, commits it, creates an annotated git tag, and pushes the branch and tag to `origin`. Shows a numbered plan and waits for confirmation before touching anything.
 
@@ -106,7 +106,7 @@ Requires the `/changelog` and `/commit` skills to be installed alongside it.
 
 ---
 
-### [mermaid](https://github.com/pavelsimo/mermaid)
+### [mermaid](skills/mermaid)
 
 Analyzes source code, schemas, or plain-text descriptions and generates valid Mermaid diagram syntax. Supports flowcharts, sequence diagrams, ER diagrams, class diagrams, state diagrams, Gantt charts, pie charts, and mindmaps.
 
@@ -119,7 +119,7 @@ Analyzes source code, schemas, or plain-text descriptions and generates valid Me
 
 ---
 
-### [taste](https://github.com/pavelsimo/taste)
+### [taste](skills/taste)
 
 Clones one or more repositories, samples key files, and synthesizes a `TASTE.md` report covering patterns, tooling, testing conventions, and anti-patterns to avoid.
 
@@ -131,7 +131,7 @@ Clones one or more repositories, samples key files, and synthesizes a `TASTE.md`
 
 ---
 
-### [review](https://github.com/pavelsimo/review)
+### [review](skills/review)
 
 Performs a deep, evidence-first code review on local working-tree changes, staged diffs, branch comparisons, or GitHub PRs and issues. Read-only by default with structured, severity-annotated output.
 
@@ -147,7 +147,7 @@ Performs a deep, evidence-first code review on local working-tree changes, stage
 
 ---
 
-### [humanize](https://github.com/pavelsimo/humanize)
+### [humanize](skills/humanize)
 
 Identifies and removes 29 AI writing patterns — significance inflation, promotional language, AI vocabulary, em dash clusters, chatbot sign-offs, filler phrases, and more. Includes optional voice calibration from a writing sample and a two-pass rewriting process (draft + anti-AI audit).
 
@@ -160,7 +160,7 @@ Based on [blader/humanizer](https://github.com/blader/humanizer) by [@blader](ht
 
 ---
 
-### [ytd](https://github.com/pavelsimo/ytd)
+### [ytd](skills/ytd)
 
 Downloads YouTube videos, audio, or transcripts using `yt-dlp`. Supports quality caps, language selection, and subtitle extraction.
 
@@ -178,19 +178,18 @@ Downloads YouTube videos, audio, or transcripts using `yt-dlp`. Supports quality
 
 ---
 
-### [create-skill](https://github.com/pavelsimo/create-skill)
+### [create-skill](skills/create-skill)
 
-Scaffolds a new agent skill from a plain-text description. Generates SKILL.md, README.md, and LICENSE; initializes a git repo; creates a public GitHub repo via `gh`; and registers the skill as a submodule in pavelsimo/skills with a README entry — all in one shot.
+Scaffolds a new agent skill from a plain-text description. Generates SKILL.md, README.md, and LICENSE, writes them as a `skills/<name>/` directory in this repo, and adds the skill to the index table and detail sections — all in one shot.
 
 ```
 /create-skill                    # prompt for name and description
 /create-skill <name>             # prompt for description only
-/create-skill --no-index         # skip registering in the skills index
 ```
 
 ---
 
-### [create-docs](https://github.com/pavelsimo/create-docs)
+### [create-docs](skills/create-docs)
 
 Systematically analyzes a project and generates or refreshes seven LLM-optimized documentation files (project overview, architecture, build, testing, development, deployment, files catalog) plus a synthesized README. Every file gets a UTC timestamp header and concrete file references. Existing files are refreshed by default; `--no-overwrite` skips them.
 
@@ -204,7 +203,7 @@ Systematically analyzes a project and generates or refreshes seven LLM-optimized
 
 ---
 
-### [search-anime](https://github.com/pavelsimo/search-anime)
+### [search-anime](skills/search-anime)
 
 Search anime and manga by natural-language query using the `ani` CLI and AniList.
 
@@ -220,7 +219,7 @@ Search anime and manga by natural-language query using the `ani` CLI and AniList
 
 ---
 
-### [create-html](https://github.com/pavelsimo/create-html)
+### [create-html](skills/create-html)
 
 Converts any document to Markdown via `uvx markitdown`, analyzes the content to select the most appropriate template from a library of 20 purpose-built HTML formats (slide decks, status reports, incident timelines, code reviews, concept explainers, and more), then generates a self-contained HTML file ready to open in a browser.
 
@@ -233,7 +232,7 @@ Converts any document to Markdown via `uvx markitdown`, analyzes the content to 
 
 ---
 
-### [create-issue](https://github.com/pavelsimo/create-issue)
+### [create-issue](skills/create-issue)
 
 Turns a rough description into a structured GitHub issue with a gitmoji-prefixed title, problem statement, acceptance criteria (as checkboxes), steps to reproduce (for bugs), and optional technical notes. An `--interview` mode reads the codebase first and asks targeted questions before drafting anything.
 
@@ -245,7 +244,7 @@ Turns a rough description into a structured GitHub issue with a gitmoji-prefixed
 
 ---
 
-### [refine-issue](https://github.com/pavelsimo/refine-issue)
+### [refine-issue](skills/refine-issue)
 
 Fetches an existing GitHub issue by number, rewrites it to the same structured template (gitmoji title, Problem, Acceptance Criteria, and more), and updates it in-place. Shows a before/after diff and waits for confirmation before touching anything.
 
@@ -257,7 +256,7 @@ Fetches an existing GitHub issue by number, rewrites it to the same structured t
 
 ---
 
-### [deep-learn](https://github.com/pavelsimo/deep-learn)
+### [deep-learn](skills/deep-learn)
 
 Runs an interactive, mastery-gated tutoring session on a single topic. Claude acts as a patient expert teacher: it builds a running comprehension checklist across three pillars (the problem, the solution, the broader context), elicits what the learner already knows, fills gaps with layered explanations (`eli5` / `eli14` / `elii`), and quizzes via `AskUserQuestion` with randomized answer order. The session does not end until every checklist item is verified.
 

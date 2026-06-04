@@ -88,7 +88,7 @@ classDiagram
 ## Installation
 
 ```bash
-npx skills@latest add pavelsimo/mermaid
+npx skills@latest add pavelsimo/skills
 ```
 
 ## Contributing

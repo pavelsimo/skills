@@ -52,7 +52,7 @@ If no remote is configured, the push step is skipped and the assistant prints th
 ## Installation
 
 ```bash
-npx skills@latest add pavelsimo/release
+npx skills@latest add pavelsimo/skills
 ```
 
 ## Contributing
