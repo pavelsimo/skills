@@ -1,20 +1,38 @@
 ---
 name: create-cli
 description: Scaffolds production-ready CLI projects from language templates, supporting Go with Cobra, Makefile, golangci-lint, goreleaser, and GitHub Pages docs; and Python with Typer, uv, ruff+mypy, PyPI OIDC trusted publishing, and GitHub Pages docs. Use when the user wants to bootstrap a new command-line tool project from scratch.
-trigger: /create-cli
 ---
 
-# Create CLI
+# create-cli skill
 
 Scaffold a complete CLI project from a language template, applying CLI design conventions from clig.dev.
 Available templates: `go`, `python`.
 
-## Do This First
+## features
+
+- scaffolds complete CLI projects from `go` or `python` templates
+- designs the CLI contract before generating files
+- applies clig.dev conventions to flags, output, errors, and prompts
+- creates GitHub repositories, docs, CI, release workflows, hooks, and Homebrew publishing paths
+- performs template variable substitution and post-copy renames from reference guidance
+- produces a concise completion summary with generated files and next steps
+
+## usage
+
+```
+/create-cli
+/create-cli name=my-tool template=go
+/create-cli name=my-tool template=python color_scheme=ocean
+```
 
 Read `templates/` in this skill's directory to understand available templates and the files each generates.
 Apply the CLI design rubric from [clig.dev](https://clig.dev/) to every interface decision.
 
-## Step 1 — Clarify
+Read [reference/default-conventions.md](reference/default-conventions.md) before finalizing interface decisions, and [reference/template-variables.md](reference/template-variables.md) before copying template files.
+
+## workflow
+
+### 1. clarify
 
 Ask only for what cannot be inferred. Proceed with best-guess defaults if the user is unsure:
 
@@ -35,7 +53,7 @@ Template-specific derived values — do not ask for these:
 - `go` only: derive `module_path` as `github.com/{github_user}/{name}`
 - `python` only: derive `module_name` as `{name}` with `-` replaced by `_` (e.g. `my-tool` → `my_tool`); derive `tool_class` as PascalCase of `{name}` (e.g. `my-tool` → `MyTool`)
 
-## Step 2 — Design
+### 2. design
 
 Produce a compact CLI spec the user can review before scaffolding:
 
@@ -62,9 +80,9 @@ Python template additional notes:
 - Shell completions use `{name} --install-completion` (Typer built-in, not `completion <shell>`)
 - A `version` subcommand is provided in addition to the `--version` eager flag
 
-Show the spec to the user and wait for confirmation before proceeding to Step 3.
+Show the spec to the user and wait for confirmation before scaffolding.
 
-## Step 3 — Scaffold
+### 3. scaffold
 
 After the user approves the CLI spec, generate the project:
 
@@ -76,7 +94,7 @@ gh repo create {github_user}/{name} \
   --clone
 cd {name}
 
-# 2. Copy templates/{template}/* with variable substitution (see table below)
+# 2. Copy templates/{template}/* with variable substitution; see reference/template-variables.md
 
 # — go template only —
 # 3. Initialize Go module
@@ -126,109 +144,14 @@ gh secret set HOMEBREW_TAP_TOKEN \
   --body "$(gh auth token)"
 ```
 
-### Template variable substitution
+### 4. output summary
 
-When copying from `templates/{template}/`, replace every occurrence of:
+After scaffolding succeeds, report the created GitHub repository, docs URL, selected template, generated file groups, and next steps. Use [reference/output-summary.md](reference/output-summary.md) for the full Go and Python summary templates.
 
-| Placeholder | Replaces with | Template |
-|-------------|---------------|----------|
-| `{{TOOL_NAME}}` | CLI name (e.g. `my-tool`) | all |
-| `{{GITHUB_USER}}` | GitHub username/org | all |
-| `{{DESCRIPTION}}` | One-sentence description | all |
-| `{{HOMEBREW_TAP}}` | Homebrew tap repo (e.g. `pavelsimo/homebrew-tap`) | all |
-| `{{YEAR}}` | Current 4-digit year | all |
-| `{{COLOR_SCHEME}}` | Docs color theme: `teal`, `ocean`, `purple`, or `amber` | all |
-| `{{MODULE_PATH}}` | `github.com/{github_user}/{name}` | go only |
-| `{{MODULE_NAME}}` | Package name with `-` → `_` (e.g. `my_tool`) | python only |
-| `{{TOOL_CLASS}}` | PascalCase class name (e.g. `MyTool`) | python only |
+## best practices
 
-After substitution, rename every `*.tmpl` file by stripping the `.tmpl` extension.
-
-Python template additional renames (after stripping `.tmpl`):
-- Directory `MODULE_NAME/` → `{module_name}/` (e.g. `my_tool/`)
-- File `Formula/TOOL_NAME.rb` → `Formula/{name}.rb` (e.g. `Formula/my-tool.rb`)
-
-Create the CLAUDE.md symlink in the generated project root:
-```bash
-ln -s AGENTS.md CLAUDE.md
-```
-
-## Step 4 — Output Summary
-
-```
-✅ Created:    https://github.com/{github_user}/{name}
-📄 Docs:       https://{github_user}.github.io/{name}  (deploys after first docs/ push)
-
-Generated (go template):
-  README.md            ← GitHub landing page (installation, quick start, commands)
-  cmd/root.go          ← root Cobra command, global flags
-  cmd/version.go       ← --version subcommand
-  Makefile             ← build / test / lint / fmt / docs / ci / release targets
-  .golangci.yml        ← linter config (errcheck, govet, staticcheck, gosec, revive…)
-  .goreleaser.yaml     ← multi-platform builds + Homebrew tap dispatch
-  .lefthook.yml        ← pre-commit: fmt-check + lint
-  AGENTS.md            ← canonical agent instructions; CLAUDE.md symlinks here
-  docs/index.md        ← docs landing page
-  docs/install.md      ← installation instructions (Homebrew, go install, binary)
-  docs/quickstart.md   ← common patterns in 60 seconds
-  docs/reference.md    ← global flags, env vars, exit codes, completions
-  scripts/build-docs-site.mjs  ← pure Node.js SSG, no deps (color theme: {color_scheme})
-  .github/workflows/ci.yml     ← fmt-check + lint + test on every push/PR
-  .github/workflows/release.yml ← goreleaser + Homebrew tap on tag push
-  .github/workflows/pages.yml  ← docs site deploy on docs/ changes
-
-Next steps (go):
-  • Add subcommands in cmd/ (each in its own file)
-  • Fill in business logic in internal/
-  • Push a v0.1.0 tag to trigger the first release: git tag v0.1.0 && git push --tags
-
-Generated (python template):
-  {module_name}/__init__.py    ← version = "0.1.0"
-  {module_name}/__main__.py    ← python -m entry point
-  {module_name}/cli.py         ← Typer app, global flags, version subcommand
-  tests/test_cli.py            ← CliRunner smoke tests
-  pyproject.toml               ← hatchling build, ruff, mypy, pytest config
-  Makefile                     ← install / build / test / lint / fmt / docs / ci / publish
-  .lefthook.yml                ← pre-commit: ruff format-check + ruff lint + mypy
-  Formula/{name}.rb            ← Homebrew formula (update SHA on first PyPI release)
-  AGENTS.md                    ← canonical agent instructions; CLAUDE.md symlinks here
-  docs/index.md                ← docs landing page
-  docs/install.md              ← installation instructions (Homebrew, pip, pipx, PyPI)
-  docs/quickstart.md           ← common patterns in 60 seconds
-  docs/reference.md            ← global flags, env vars, exit codes, completions
-  scripts/build-docs-site.mjs  ← pure Node.js SSG, no deps (color theme: {color_scheme})
-  .github/workflows/ci.yml     ← ruff + mypy + pytest on every push/PR
-  .github/workflows/release.yml ← PyPI OIDC + GitHub Release + Homebrew tap on tag
-  .github/workflows/pages.yml  ← docs site deploy on docs/ changes
-
-Next steps (python):
-  • Add subcommands: @app.command() in {module_name}/cli.py
-  • Configure PyPI trusted publishing at https://pypi.org/manage/account/publishing/
-    Set: owner={github_user}, repository={name}, workflow=release.yml, environment=release
-  • Push a v0.1.0 tag to trigger the first release: git tag v0.1.0 && git push --tags
-  • After first PyPI release, update Homebrew formula resource SHAs with:
-    uv run pip-audit or homebrew-pypi-poet (optional)
-```
-
-## Default Conventions
-
-- Command tree is subcommand-centric: `{name} <verb> [args]`
-- Primary data to stdout; diagnostics, progress, and errors to stderr
-- Output structs defined early; human table is a rendering layer on top of the same struct
-- Flag names are lowercase hyphenated (never camelCase)
-- Short flags only for the most-used: `-v` verbose, `-q` quiet, `-n` dry-run, `-f` force, `-o` output
-- `--read-only` / `READONLY=1` env as safety mode for agent use
-- README badges: `flat-square` style, `logoColor=white`, branded hex colors; **no CI/coverage badges**
-
-Go-specific:
-- `SilenceUsage: true` on all `RunE` commands — don't dump usage on every error
-- Shell completions via `cobra` built-ins: `{name} completion bash|zsh|fish|powershell`
-- Badge order: release → license MIT → Go → Homebrew → DeepWiki
-
-Python-specific:
-- Typer handles `--help` / `-h` automatically via `context_settings`
-- Shell completions via Typer built-ins: `{name} --install-completion [bash|zsh|fish]`
-- `no_args_is_help=True` on the Typer app so bare `{name}` shows help
-- `rich_markup_mode="rich"` enables Rich markup in docstrings
-- Type annotations required on all functions; mypy strict mode is enforced
-- Badge order: release → license MIT → Python → PyPI → Homebrew → DeepWiki
+- **confirm before scaffolding** — show the CLI spec and wait for approval before creating a GitHub repo or files
+- **stdout is data** — diagnostics, progress, and errors go to stderr
+- **prefer safe defaults** — include `--dry-run`, `--no-input`, `--no-color`, and force/confirmation guards for state changes
+- **derive template-only values** — do not ask the user for module paths, package names, or class names that can be computed from the chosen name
+- **read references on demand** — use `reference/template-variables.md`, `reference/output-summary.md`, and `reference/default-conventions.md` only when those details are needed

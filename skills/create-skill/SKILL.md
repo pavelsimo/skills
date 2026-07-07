@@ -1,18 +1,18 @@
 ---
 name: create-skill
-description: Bootstraps a new agent skill by generating SKILL.md, README.md, and LICENSE as a directory inside the pavelsimo/skills repo and registering it in the index README. Use when the user wants to create a new Claude Code skill from scratch.
-trigger: /create-skill
+description: Bootstraps a new agent skill by generating SKILL.md, README.md, LICENSE, and optional reference files as a directory inside the pavelsimo/skills repo and registering it in the index README. Use when the user wants to create a new Claude Code skill from scratch.
 ---
 
 # create-skill skill
 
-A Claude Code skill that scaffolds a new agent skill from a plain-text description — generates SKILL.md, README.md, and LICENSE, writes them as a `skills/<name>/` directory inside the centralized `pavelsimo/skills` repo, and registers the skill in the index README.
+A Claude Code skill that scaffolds a new agent skill from a plain-text description — generates SKILL.md, README.md, LICENSE, and optional `reference/*.md` files, writes them as a `skills/<name>/` directory inside the centralized `pavelsimo/skills` repo, and registers the skill in the index README.
 
 ## features
 
-- generates SKILL.md (frontmatter + features + usage + workflow + best practices) from the user's description
+- generates SKILL.md (`name` + `description` frontmatter, features, usage, workflow, best practices) from the user's description
 - produces a README.md matching the standard skill template (usage, installation via `npx skills@latest add pavelsimo/skills`, license)
 - writes an MIT LICENSE with the current year and "Pavel Simo" as the copyright holder
+- creates optional `reference/*.md` files for large tables, catalogs, examples, or templates
 - creates the skill as a `skills/<name>/` directory inside the `pavelsimo/skills` repo — no separate repo, no submodule
 - updates the index `README.md`: adds a table row and a detailed `### [name]` section linking to `skills/<name>`
 - commits the new skill with a single `➕` commit and offers to push
@@ -28,9 +28,11 @@ A Claude Code skill that scaffolds a new agent skill from a plain-text descripti
 
 ```
 skills/<name>/
-├── SKILL.md     # full skill specification (generated from your description)
-├── README.md    # user-facing docs with usage + installation
-└── LICENSE      # MIT, current year, Pavel Simo
+├── SKILL.md       # full skill specification (generated from your description)
+├── README.md      # user-facing docs with usage + installation
+├── LICENSE        # MIT, current year, Pavel Simo
+└── reference/     # optional bulky catalogs, templates, or examples
+    └── <topic>.md
 ```
 
 plus a table row and a `### [<name>](skills/<name>)` detail section appended to the repo's `README.md`.
@@ -46,12 +48,12 @@ plus a table row and a `### [<name>](skills/<name>)` detail section appended to 
    - wait for the user's response (a paragraph or several paragraphs is fine)
 
 3. generate SKILL.md from the description:
-   - frontmatter: `name`, `description` (one-line imperative summary), `trigger` (`/<name>`)
+   - frontmatter: `name`, `description` only
    - `## features` — 4–8 bullet points extracted from the description
    - `## usage` — command + flag examples in a fenced code block
    - `## workflow` — numbered steps in imperative mood; include exact bash commands where applicable; conditional branches use sub-bullets ("if X: …")
    - `## best practices` — 4–8 bullets
-   - `## <topic> reference` — include only when the skill involves an enumerated set of values (types, severities, emoji codes, etc.)
+   - if the skill involves a large enumerated set of values, examples, or output templates, keep only a pointer in SKILL.md and generate `reference/<topic>.md`
 
 4. generate README.md:
    - `# <name> skill` title + one-sentence description
@@ -66,7 +68,7 @@ plus a table row and a `### [<name>](skills/<name>)` detail section appended to 
    - year: run `date +%Y` to get the current year
    - copyright holder: Pavel Simo
 
-6. show all three generated files and ask: `create skills/<name>/ with these files? yes / edit / cancel`
+6. show all generated files and ask: `create skills/<name>/ with these files? yes / edit / cancel`
    - **edit**: ask which file to revise and what to change; regenerate and re-show; repeat
    - **cancel**: stop immediately, delete nothing (nothing was written yet)
    - **yes**: proceed
@@ -79,7 +81,7 @@ plus a table row and a `### [<name>](skills/<name>)` detail section appended to 
 8. write the directory and files:
    ```bash
    mkdir -p skills/<name>
-   # write SKILL.md, README.md, LICENSE into skills/<name>/
+   # write SKILL.md, README.md, LICENSE, and any reference/*.md files into skills/<name>/
    ```
 
 9. register in the index `README.md`:
@@ -114,7 +116,7 @@ plus a table row and a `### [<name>](skills/<name>)` detail section appended to 
 
 - **validate the name first** — reject uppercase, spaces, or special characters before doing anything else
 - **show drafts before writing** — always show generated files and wait for confirmation; never write to disk without approval
-- **exactly three files per skill** — `SKILL.md`, `README.md`, `LICENSE`; never leave a nested `.git` directory inside the skill folder and never add it as a submodule
+- **keep SKILL.md lean** — every skill has `SKILL.md`, `README.md`, and `LICENSE`; use `reference/*.md` for large tables, catalogs, examples, and templates
 - **one atomic commit** — a single `➕ add <name> skill` commit covering the new directory and the README index update
 - **preserve README.md structure** — insert the table row and the detailed `###` section in **alphabetical position** (both lists are kept sorted by skill name); link to `skills/<name>`, never an external repo
 - **derive the year dynamically** — run `date +%Y` rather than hardcoding the current year in the LICENSE

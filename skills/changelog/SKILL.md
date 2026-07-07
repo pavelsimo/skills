@@ -1,7 +1,6 @@
 ---
 name: changelog
 description: Generates changelog entries from git history following Keep a Changelog conventions and cuts versioned releases. Use when the user wants to update CHANGELOG.md with recent commits or promote [Unreleased] to a versioned release.
-trigger: /changelog
 ---
 
 # changelog skill
@@ -28,15 +27,6 @@ A Claude Code skill that keeps `CHANGELOG.md` in sync with your project. Reads g
 /changelog --release 1.2.0    # promote [Unreleased] to a versioned section
 ```
 
-## modes
-
-### mode 1 — generate
-
-Invoked with no arguments or with a date/range. Reads the git log, translates commits into user-facing entries, groups them by change type, and merges them into the `[Unreleased]` section of `CHANGELOG.md`.
-
-### mode 2 — release
-
-Invoked with `--release <version>`. Renames the existing `[Unreleased]` section to a versioned, dated section, adds a fresh empty `[Unreleased]` above it, and rewrites the comparison link block at the bottom.
 
 ## change types
 
@@ -49,49 +39,14 @@ Invoked with `--release <version>`. Renames the existing `[Unreleased]` section 
 | `Fixed` | resolved bugs or incorrect behavior |
 | `Security` | vulnerability fixes |
 
-## changelog format
 
-```markdown
-# Changelog
-
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-## [Unreleased]
-
-## [1.1.0] - 2024-01-15
-
-### Added
-- New feature X
-
-### Fixed
-- Bug Y
-
-## [1.0.0] - 2024-01-01
-
-### Added
-- Initial release
-
-[Unreleased]: https://github.com/owner/repo/compare/v1.1.0...HEAD
-[1.1.0]: https://github.com/owner/repo/compare/v1.0.0...v1.1.0
-[1.0.0]: https://github.com/owner/repo/releases/tag/v1.0.0
-```
-
-Format rules:
-- version headers: `## [X.Y.Z] - YYYY-MM-DD` (always bracketed, date required on versioned sections)
-- type sub-sections: `### Added`, `### Changed`, etc. (title case)
-- entries: `-` bullets, no trailing period, imperative user-facing language
-- versions in reverse chronological order — newest first
-- `[Unreleased]` section always present at the top, even when empty
-- comparison link definitions live at the very bottom of the file
+For the canonical file skeleton and format rules, read [reference/changelog-format.md](reference/changelog-format.md) when creating or validating a changelog.
 
 ## workflow
 
 ### mode 1 — generate workflow
 
-1. check for `CHANGELOG.md`; if absent, create it from the canonical template above with an empty `[Unreleased]` section
+1. check for `CHANGELOG.md`; if absent, create it from the canonical template in [reference/changelog-format.md](reference/changelog-format.md) with an empty `[Unreleased]` section
 2. determine the git boundary for commit collection:
    - if a date or range argument was given (e.g., `2025-04-01` or `2025-04-01..HEAD`), use it directly
    - otherwise, find the most recent versioned section in `CHANGELOG.md` (e.g., `## [1.1.0]`) and derive the lower bound: run `git log --oneline` to locate the commit tagged `v1.1.0`; if no versioned section exists, use the full history

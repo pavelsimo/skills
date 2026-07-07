@@ -1,7 +1,6 @@
 ---
 name: create-issue
-description: Turns a rough description into a structured GitHub issue with gitmoji title, problem statement, acceptance criteria, steps to reproduce (bugs), and technical notes. Supports an interview mode that reads the codebase before asking questions. Posts via the gh CLI.
-trigger: /create-issue
+description: Turns a rough description into a structured GitHub issue with gitmoji title, problem statement, acceptance criteria, optional interview mode, and posting via gh CLI.
 ---
 
 # create-issue skill
@@ -30,51 +29,10 @@ Turn a rough description into a well-structured GitHub issue. The skill formats 
 /create-issue --dry-run                      # preview without posting
 ```
 
-## gitmoji reference
-
-| Type | Gitmoji | Example title |
-|------|---------|---------------|
-| feat | ✨ | `✨ add oauth login via google` |
-| bug | 🐛 | `🐛 password reset link expires too early` |
-| chore | 🔧 | `🔧 upgrade go to 1.23` |
-| refactor | ♻️ | `♻️ simplify auth middleware` |
-| perf | ⚡️ | `⚡️ cache user profile queries` |
-| docs | 📝 | `📝 document deployment steps` |
-| test | 🧪 | `🧪 add integration tests for login flow` |
-| security | 🔒 | `🔒 sanitize file upload paths` |
-| ui | 💄 | `💄 update button styles to match design system` |
-
-## issue template
-
-```markdown
-## 🎯 Problem
-
-<one paragraph — why this matters, what pain it addresses>
-
-## 📋 Description
-
-<what needs to be done>
-
-## ✅ Acceptance Criteria
-
-- [ ] <criterion 1>
-- [ ] <criterion 2>
-
-## 🔁 Steps to Reproduce
-
-> Only included for bug issues
-
-1. <step 1>
-2. <step 2>
-- **Expected:** <what should happen>
-- **Actual:** <what happens instead>
-
-## 💡 Technical Notes
-
-> Optional — file paths, APIs, related code, implementation hints
-```
 
 ## workflow
+
+Read [reference/issue-format.md](reference/issue-format.md) when selecting a gitmoji or rendering the issue body template.
 
 1. **parse args**: extract `<description>`, `--type`, `--labels`, `--repo`, `--dry-run`, `--interview`
 

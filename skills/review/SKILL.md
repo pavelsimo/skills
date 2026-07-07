@@ -1,7 +1,6 @@
 ---
 name: review
 description: Performs deep, evidence-first code review on local diffs, staged changes, branch comparisons, or GitHub PRs and issues, with severity-annotated findings. Use when the user wants to review code changes, audit a pull request, or investigate a GitHub issue.
-trigger: /review
 ---
 
 # review skill
@@ -137,39 +136,10 @@ Good fixes usually:
 
 Call out when a fix is symptom-level only. If a slightly larger refactor makes the invariant obvious and reduces future bugs, recommend it with a concrete shape. If the refactor widens risk without improving the bug class, say so explicitly.
 
+
 ## output format
 
-Always produce the review in this exact structure:
-
-```
-🎯 Review target: <local diff scope | PR #N | issue #N>
-📂 Scope: <files changed, surface area, affected subsystems>
-
-💬 Summary: <2–4 sentences describing what changed and the overall assessment>
-
-🔍 Findings:
-  1. [🔴 Critical / 🟠 High / 🟡 Medium / 🔵 Low / 🔹 Nit] Title
-     📄 File: <path>:<line> or <path>
-     🔎 Evidence: <exact code reference, symbol, or behavior>
-     💥 Why it matters: <failure mode or user impact>
-     🛠️ Suggested fix: <concrete recommendation>
-
-  2. [Severity] Title
-     ...
-
-🧪 Tests / proof:
-  <commands run and results, or explicit statement that tests were not run and why>
-
-♻️ Refactor opportunities:
-  <specific shape of any refactors worth considering, or "none identified">
-
-⚠️ Remaining risks:
-  <what is still uncertain, untested, or depends on runtime behavior>
-
-✅ Verdict: <one of: No blocking issues | Needs changes | Needs discussion>
-```
-
-If there are no findings, say so explicitly under `Findings:` — do not omit the section.
+Always produce the review using the exact structure in [reference/output-format.md](reference/output-format.md). If there are no findings, say so explicitly under `Findings:` — do not omit the section.
 
 ## PR review shape
 
@@ -236,7 +206,7 @@ cargo test <module>
 5. **identify findings**: classify each finding by severity; include file, line or symbol, concrete evidence, failure mode, and recommended fix
 6. **check for tests**: look for test files covering the changed surface; note gaps; run tests only if the user asked or if running them would materially resolve uncertainty
 7. **assess refactor opportunity**: judge whether a modest restructuring would make the invariant obvious and reduce future bugs; if yes, describe the concrete shape
-8. **compose output**: write the structured report in the required format above
+8. **compose output**: write the structured report in the required format from [reference/output-format.md](reference/output-format.md)
 9. **for `--post` only**: show the exact comment text and wait for explicit user confirmation before calling `gh pr review` or `gh pr comment`
 
 ## best practices

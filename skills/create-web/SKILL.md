@@ -1,7 +1,6 @@
 ---
 name: create-web
 description: Scaffold a production-ready web application from language templates. Use when the user wants to bootstrap a new web project from scratch.
-trigger: /create-web
 ---
 
 # create-web skill
@@ -26,11 +25,11 @@ trigger: /create-web
 /create-web name=my-app template=ruby database=mysql
 ```
 
-## do this first
+## workflow
 
-Read `templates/` to understand the available templates and what variable placeholders each one uses before collecting any input from the user.
+Read `templates/` to understand the available templates and what variable placeholders each one uses before collecting any input from the user. Read [reference/37signals-style.md](reference/37signals-style.md) before changing Rails conventions, and [reference/template-maintenance.md](reference/template-maintenance.md) only when adding a new language template.
 
-## step 1 — clarify
+### 1. clarify
 
 Collect these values via `AskUserQuestion`. Auto-detect `github_user` silently; never prompt the user for it.
 
@@ -55,7 +54,7 @@ Collect these values via `AskUserQuestion`. Auto-detect `github_user` silently; 
 
 PascalCase: split on `-`, capitalize each word, join. Underscore: replace `-` with `_`.
 
-## step 2 — show spec card
+### 2. show spec card
 
 Display a confirmation card before creating anything:
 
@@ -78,7 +77,7 @@ Display a confirmation card before creating anything:
 
 Ask: "Does this look right? Shall I scaffold the project?"
 
-## step 3 — scaffold
+### 3. scaffold
 
 Execute in order:
 
@@ -135,7 +134,7 @@ Execute in order:
    gh repo edit --enable-wiki=false --enable-issues=true
    ```
 
-## step 4 — output summary
+### 4. output summary
 
 ```
 ✅ Created: https://github.com/{github_user}/{name}
@@ -183,26 +182,3 @@ Substitution applies to both file contents and filenames. `.tmpl` extension is s
 - CSS additions go in focused component files under `app/assets/stylesheets/` using cascade layers — never suggest Tailwind
 - Background jobs go through Solid Queue — never suggest Sidekiq or Redis
 - New routes nominalize verbs: "close" → `resource :closure`, "pin" → `resource :pin`, "watch" → `resource :watch`
-
-## 37signals style guide reference
-
-Key rules encoded in every generated `AGENTS.md`:
-
-1. **Rich models** — business logic in models and concerns, not service objects
-2. **CRUD only** — nominalize verbs: `close` → `resource :closure`, `publish` → `resource :publication`
-3. **Concerns** — horizontal logic in `app/models/concerns/`, `app/controllers/concerns/`
-4. **State = records** — `Closure`, `Pin`, `Watch` records instead of `closed_at`, `pinned`, `watching` booleans
-5. **No Redis** — Solid Queue (jobs), Solid Cache (cache), Solid Cable (WebSockets)
-6. **Build first** — reach for a gem only after confirming Rails doesn't provide the solution
-7. **Ship and learn** — merge prototype-quality code, observe real usage, iterate
-
-## adding new templates
-
-To add a new language template (e.g., Python/Django):
-
-1. Create `templates/<language>/` with the same top-level structure as `templates/ruby/`
-2. Add the new option to step 1's template field
-3. Add the new template's derived values to step 1 (Derived section)
-4. Add a scaffold branch for the new template in step 3
-5. Update the template variable reference table with any new placeholders
-6. Add the new template row to `README.md`

@@ -1,16 +1,20 @@
 ---
 name: markdown
 description: Converts files to Markdown using uvx markitdown, supporting PDF, Word, PowerPoint, Excel, HTML, images with OCR, audio with transcription, ZIP archives, and YouTube URLs. Use when the user wants to convert a file or URL to Markdown.
-trigger: /markdown
 ---
 
 # markdown skill
 
-> Adapted from [steipete/agent-scripts — markdown-converter](https://github.com/steipete/agent-scripts/blob/main/skills/markdown-converter/SKILL.md) by [@steipete](https://github.com/steipete).
-
 Convert files to Markdown using `uvx markitdown` — no installation required.
 
-## basic usage
+## features
+
+- converts documents, web/data files, media files, archives, and URLs to Markdown
+- supports stdout, `-o` output files, and stdin conversion
+- accepts file extension, MIME type, and charset hints for ambiguous input
+- can enable or list markitdown plugins when needed
+
+## usage
 
 ```bash
 # convert to stdout
@@ -66,8 +70,12 @@ cat document | uvx markitdown -x .pdf > output.md
 4. if output looks malformed, suggest a MIME or extension hint via `-x` or `-m`
 5. return the resulting Markdown to the user or confirm the saved file path
 
-## notes
+## best practices
 
 - output preserves document structure: headings, tables, lists, links
 - first run caches dependencies; subsequent runs are faster
 - for stdin input, always pass `-x` or `-m` so markitdown knows the format
+
+## credits
+
+Adapted from [steipete/agent-scripts — markdown-converter](https://github.com/steipete/agent-scripts/blob/main/skills/markdown-converter/SKILL.md) by [@steipete](https://github.com/steipete).

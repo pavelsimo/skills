@@ -1,12 +1,11 @@
 ---
 name: ytd
-description: Downloads YouTube videos, extracts audio as MP3, and fetches clean deduplicated transcripts using yt-dlp. Use when the user wants to download a YouTube video, extract its audio, or get a transcript from a YouTube URL.
-trigger: /ytd
+description: Downloads YouTube videos, extracts MP3 audio, lists formats, and fetches clean deduplicated transcripts. Use when the user wants to download a YouTube video, extract its audio, or get a transcript from a YouTube URL.
 ---
 
 # ytd skill
 
-A Claude Code skill that downloads YouTube videos, extracts audio, fetches transcripts, and lists available formats — delegating all work to `ytd.py` via `uv run --upgrade`.
+A Claude Code skill that downloads YouTube videos, extracts audio, fetches transcripts, and lists available formats with quality and language controls.
 
 ## features
 

@@ -1,7 +1,6 @@
 ---
 name: release
 description: Cuts a versioned release by updating CHANGELOG.md, committing, creating an annotated git tag, and pushing to remote in one step. Use when the user wants to publish a new version of their project.
-trigger: /release
 ---
 
 # release skill
@@ -147,20 +146,8 @@ Never run `git push --force` on a tag.
 
 If no remote was configured, skip this step and print the manual push instructions.
 
-### completion summary
 
-After all steps complete successfully, print:
-
-```
-released v<version>
-
-  CHANGELOG.md updated
-  commit: <short-sha> 🔖 release v<version>
-  tag:    v<version> → <short-sha>
-  pushed: origin/<branch> + refs/tags/v<version>
-```
-
-If the push was skipped, replace the last line with `  pushed: (skipped — no remote)`.
+After all steps complete successfully, print the summary using [reference/completion-summary.md](reference/completion-summary.md).
 
 ## best practices
 

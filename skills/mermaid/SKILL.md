@@ -1,7 +1,6 @@
 ---
 name: mermaid
 description: Generates Mermaid diagrams from source files, schemas, or descriptions, with automatic diagram type detection. Use when the user wants to visualize code architecture, database schemas, request flows, or any system as a Mermaid diagram.
-trigger: /mermaid
 ---
 
 # mermaid skill
@@ -38,36 +37,13 @@ A Claude Code skill that analyzes source files, schemas, code, or a plain-text d
 /mermaid --output=docs/arch.md     # save to file after confirmation
 ```
 
-## diagram types
 
-| Type | Keyword | Best for |
-|------|---------|----------|
-| Flowchart | `flowchart` | process logic, decision trees, control flow |
-| Sequence | `sequence` | request/response flows, component interactions, API calls |
-| ER diagram | `er` | database schemas, data models, entity relationships |
-| Class diagram | `class` | object hierarchies, interfaces, type relationships |
-| State diagram | `state` | lifecycle states, FSMs, workflow states |
-| Gantt | `gantt` | project timelines, task schedules |
-| Pie chart | `pie` | proportional breakdowns, distribution summaries |
-| Mindmap | `mindmap` | concept hierarchies, feature trees |
+## diagram selection
 
-## auto-detection rules
-
-When no `--type` flag is given, choose the diagram type by examining:
-
-1. **File extension and content signals**
-   - `.sql`, `schema.*`, migration files, ORM model files → `er`
-   - files with class definitions, interfaces, type hierarchies → `class`
-   - files describing request handling, middleware chains, service calls → `sequence`
-   - files with conditional branching, pipelines, process logic → `flowchart`
-2. **Description keywords** (when a free-text description is provided)
-   - "flow", "process", "steps", "pipeline", "decision" → `flowchart`
-   - "request", "response", "calls", "sends", "receives", "interactions" → `sequence`
-   - "schema", "table", "entity", "model", "database", "relation" → `er`
-   - "class", "interface", "inherit", "extend", "implement" → `class`
-3. **Project context** (when invoked with no arguments)
-   - look at the current directory: SQL/migration files present → `er`; heavily object-oriented source → `class`; API route files or controller files → `sequence`
-   - default to `flowchart` when signals are ambiguous
+- Treat a target as a file, directory, or glob when it resolves on disk; otherwise treat it as a free-text description.
+- Use `--type=<type>` as an explicit override and validate it against [reference/diagram-selection.md](reference/diagram-selection.md).
+- Without `--type`, infer from source signals: SQL/schema/model files -> ER, class/type hierarchies -> class, request interactions -> sequence, and processes/branches -> flowchart.
+- Default to `flowchart` when signals are ambiguous, and tell the user about the fallback.
 
 ## output format
 
@@ -94,14 +70,14 @@ If `--output` is specified, the content saved to file is the fenced `mermaid` bl
 
 ## workflow
 
-1. **parse arguments**: extract `--type`, `--output`, and the remaining target (file, directory glob, or description string); if target is a path, verify it exists
+1. **parse arguments**: extract `--type`, `--output`, and the remaining target; if the target resolves to an existing file, directory, or glob, treat it as filesystem input, otherwise treat it as a free-text description
 2. **gather context**:
    - if a file or directory was given: read the relevant source files (SQL schemas, model definitions, class files, route files); focus on structure, not implementation detail
    - if a description was given: use it as the primary specification
    - if no arguments: scan the current working directory for the strongest structural signals (schemas, models, routes, main entry point)
 3. **determine diagram type**:
-   - if `--type` was given, use it directly; validate that the value is one of the recognized keywords in the reference table above; if not, show the table and ask the user to pick
-   - otherwise, apply the auto-detection rules in order; if signals conflict or are absent, default to `flowchart` and note the fallback to the user
+   - if `--type` was given, use it directly; validate that the value is one of the recognized keywords in [reference/diagram-selection.md](reference/diagram-selection.md); if not, show the table and ask the user to pick
+   - otherwise, apply the auto-detection rules from [reference/diagram-selection.md](reference/diagram-selection.md) in order; if signals conflict or are absent, default to `flowchart` and note the fallback to the user
 4. **extract entities and relationships** from the gathered context:
    - for `er`: tables/models → entities, foreign keys and associations → relationships with cardinality
    - for `class`: classes/interfaces/types → nodes, inheritance/composition/implementation → edges

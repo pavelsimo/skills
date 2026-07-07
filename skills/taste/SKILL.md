@@ -1,27 +1,34 @@
 ---
 name: taste
-version: 1.1.0
 description: Analyzes 2-20 repositories and extracts engineering conventions into a TASTE.md document with patterns, style guidelines, anti-patterns, and a practical playbook. Use when the user wants to understand shared conventions across a corpus of repos or bootstrap a new project from existing engineering taste.
 ---
 
-# Taste — Engineering Convention Extractor
+# taste skill
 
 Analyze a set of repositories and produce a `TASTE.md` document that captures the shared engineering conventions, architectural decisions, and product philosophy across the corpus.
 
-## When to Use
+## features
 
-- You have 2–20 repositories from a shared author, org, or domain and want to extract a transferable style guide
-- You want to understand what makes a codebase family cohesive before contributing or building something similar
-- You want to bootstrap a new project by inheriting conventions from repos you admire
+- analyzes 2–20 repositories from a shared author, org, or domain to extract a transferable style guide
+- explains what makes a codebase family cohesive before contributing or building something similar
+- bootstraps new projects by inheriting conventions from repos you admire
+
+## usage
+
+```
+/taste owner/repo1 owner/repo2
+/taste --html --output ./reports owner/repo1 owner/repo2
+/taste --html --slides ~/Projects/tool-a https://github.com/owner/tool-b
+```
 
 Pass `--html` to produce both `TASTE.md` and a polished `TASTE.html`.
 Pass `--slides` (requires `--html`) to also produce `TASTE-SLIDES.html` — a fullscreen slide deck summarizing the corpus.
 
 Do not invoke for a single file, a single tiny repo, or repos with no shared context.
 
-## Protocol
+## workflow
 
-### Step 1 — Intake
+### step 1 — intake
 
 Parse all arguments. Recognized flags:
 
@@ -44,7 +51,7 @@ mkdir -p "${TASTE_STAGE}"
 echo "Staging in ${TASTE_STAGE}"
 ```
 
-### Step 2 — Clone
+### step 2 — clone
 
 For each git URL:
 
@@ -65,7 +72,7 @@ For local paths: use the path directly without cloning. Mark as `[local]` in the
 
 If a clone fails: note `[unavailable]` in the scope table, skip that repo, continue.
 
-### Step 3 — Inventory Each Repo
+### step 3 — inventory each repo
 
 For each available repo, collect:
 
@@ -179,7 +186,7 @@ grep -E '^#{1,3} ' "${REPO}/README.md" 2>/dev/null | head -40
 Record heading level, text, and order. Normalize for cross-repo comparison
 (e.g., "Installation", "Install", "Getting Started" → `install` slot).
 
-### Step 4 — Sample Files by Priority
+### step 4 — sample files by priority
 
 For each repo, read files in this order. Stop after ~50 files per repo (token budget). Read up to 150 lines per implementation file; read config/CI files in full if under 200 lines.
 
@@ -229,7 +236,7 @@ For each repo, read files in this order. Stop after ~50 files per repo (token bu
 
 For each snippet, capture the repo, file path, and why the example is worth copying or avoiding. Keep snippets short: usually 5-20 lines, never more than 30 lines unless the surrounding context is essential.
 
-### Step 5 — Detect Signals
+### step 5 — detect signals
 
 For each signal family, record which repos show the pattern and classify:
 
@@ -243,7 +250,7 @@ MCP integration.
 
 See **[reference/signal-families.md](reference/signal-families.md)** for the complete signal definitions.
 
-### Step 6 — Write TASTE.md
+### step 6 — write taste.md
 
 Write `./TASTE.md` in the **current working directory** (not the staging directory). Follow the output template exactly. Be prescriptive: write "do X because Y", not "they did X". Keep repo-specific observations in the repo-specific notes section; everything else should be cross-repo synthesis.
 
@@ -263,7 +270,7 @@ mention in the Tooling section. Format: `[tool-name](https://github.com/owner/re
 Prefer the source repository URL over a package registry page (PyPI, npm, pkg.go.dev).
 Subsequent mentions in the same section may use plain text.
 
-### Step 7 — Generate TASTE.html (only if `--html` was passed)
+### step 7 — generate taste.html (only if `--html` was passed)
 
 Fetches reference files from the thariqs HTML effectiveness corpus, selects appropriate visual
 components, and writes a self-contained `TASTE.html` with at least 5 distinct component types.
@@ -272,7 +279,7 @@ The result should feel like an editorial analysis artifact — scannable, visual
 See **[reference/html-generation.md](reference/html-generation.md)** for the full design system reference,
 component selection guide, and rendering rules.
 
-### Step 8 — Generate TASTE-SLIDES.html (only if `--slides` was passed)
+### step 8 — generate taste-slides.html (only if `--slides` was passed)
 
 Produces an 8–12 slide browser-native deck using scroll-snap, covering: title, scope, top
 patterns, pattern deep-dives, project structure, tooling/CI, best practices, anti-patterns,
@@ -280,11 +287,11 @@ playbook quickstart, and close.
 
 See **[reference/html-generation.md](reference/html-generation.md)** (Slides section) for the full rendering rules.
 
-## Output Template
+## output template
 
 See **[reference/output-template.md](reference/output-template.md)** for the exact TASTE.md output format.
 
-## Edge Cases
+## edge cases
 
 | Situation | Action |
 |-----------|--------|

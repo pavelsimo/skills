@@ -1,7 +1,6 @@
 ---
 name: refine-issue
 description: Fetches an existing GitHub issue by number, rewrites it to a structured template with gitmoji title and consistent sections (problem, acceptance criteria, steps to reproduce, technical notes), and updates it in-place via gh issue edit.
-trigger: /refine-issue
 ---
 
 # refine-issue skill

@@ -1,7 +1,6 @@
 ---
 name: deep-learn
 description: Runs an interactive, mastery-gated tutoring session on one specific topic — maintains a running comprehension checklist, elicits the learner's current understanding first, fills gaps with layered explanations, and quizzes via AskUserQuestion until the learner demonstrably understands the problem, the solution, and why it matters. Use when the user wants to deeply learn a topic, file, or code change.
-trigger: /deep-learn
 ---
 
 # deep-learn skill
@@ -29,7 +28,7 @@ A Claude Code skill that runs a Socratic, comprehension-gated learning session o
 /deep-learn --resume             # continue from an existing checklist doc
 ```
 
-## the comprehension checklist
+## comprehension checklist
 
 The skill maintains a running markdown doc (default: `deep-learn-<topic-slug>.md` in the CWD) that is the single source of truth for the session. It is grouped by the three pillars below. Every item carries a mastery marker that is updated after each exchange and persisted to disk:
 

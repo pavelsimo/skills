@@ -11,13 +11,14 @@ A skill for agents that bootstraps a new agent skill from a plain-text descripti
 
 ## What it creates
 
-Provide a skill name and describe what the skill should do. The assistant generates and confirms three files before writing anything:
+Provide a skill name and describe what the skill should do. The assistant generates and confirms the required files before writing anything:
 
 ```
 skills/<name>/
-├── SKILL.md     # full skill specification generated from your description
-├── README.md    # user-facing docs with usage + installation instructions
-└── LICENSE      # MIT, current year, Pavel Simo
+├── SKILL.md       # full skill specification generated from your description
+├── README.md      # user-facing docs with usage + installation instructions
+├── LICENSE        # MIT, current year, Pavel Simo
+└── reference/     # optional large catalogs, tables, templates, or examples
 ```
 
 After confirmation it:
