@@ -7,6 +7,7 @@ Scaffold a production-ready web application from language templates.
 ```
 /create-web
 /create-web name=my-app template=ruby database=mysql
+/create-web name=my-app template=python
 ```
 
 ## Templates
@@ -14,18 +15,32 @@ Scaffold a production-ready web application from language templates.
 | Template | Stack |
 |----------|-------|
 | `ruby` (default) | Rails 8.x · Hotwire · Solid Queue/Cache/Cable · Kamal · Magic link auth |
+| `python` | Reflex · FastAPI (`api_transformer`) · SQLite WAL · uv/ruff/mypy/pytest · Kamal · Magic link auth |
 
 ## What It Creates
 
-- Passwordless magic link authentication — no Devise, ~150 lines custom code
+Both templates:
+
+- Passwordless magic link authentication — no Devise, no auth library
+- Kamal deployment configuration with multi-stage Dockerfile
+- GitHub Actions CI + automatic Kamal deploy on push to main
+- `AGENTS.md` encoding 37signals engineering principles (← symlinked as `CLAUDE.md`)
+
+Ruby template:
+
 - UUID primary keys across all tables
 - Hotwire (Turbo + Stimulus) frontend with importmap-rails — no Node.js bundler
 - Native CSS with cascade layers — no Tailwind, no preprocessors
 - Solid Queue/Cache/Cable — no Redis dependency
 - Minitest test suite with fixtures — no RSpec, no FactoryBot
-- Kamal deployment configuration with multi-stage Dockerfile
-- GitHub Actions CI (rubocop + minitest + system tests)
-- `AGENTS.md` encoding 37signals engineering principles (← symlinked as `CLAUDE.md`)
+
+Python template:
+
+- Reflex UI (pure Python, compiles to React) with a FastAPI app mounted via `api_transformer`
+- SQLite tuned for concurrency: WAL mode, `busy_timeout`, single shared engine
+- SQLModel models with Alembic migrations (auto-formatted by a ruff post-write hook)
+- uv + ruff + mypy strict + pytest with a coverage gate, lefthook pre-commit hooks
+- Single-container production image: Caddy serves the exported frontend and proxies the backend
 
 ## Architecture
 

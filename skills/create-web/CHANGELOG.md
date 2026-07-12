@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Python template: Reflex UI + FastAPI mounted via `api_transformer`, SQLite with WAL mode
+  on a Kamal volume, magic-link auth (Identity/User/Session/MagicLinkCode parity with ruby),
+  SQLModel + Alembic migrations, uv + ruff + mypy strict + pytest + lefthook, GitHub Actions
+  CI and Kamal deploy, single-container production image (Caddy + Reflex backend)
+
 ## [0.1.0] - 2025-06-04
 
 ### Added
