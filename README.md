@@ -29,6 +29,7 @@ npx skills@latest add pavelsimo/skills
 <tr><td><a href="skills/markdown">markdown</a></td><td>Convert files and URLs to clean Markdown using markitdown via uvx — no installation required</td></tr>
 <tr><td><a href="skills/mermaid">mermaid</a></td><td>Generate Mermaid diagrams from source files, schemas, or plain-text descriptions with automatic or manual diagram type selection</td></tr>
 <tr><td><a href="skills/principles">principles</a></td><td>A rulebook of 21 engineering principles grouped by phase — before writing, changing code, concurrency/ops, debugging, readability, agent conduct — loaded one group at a time</td></tr>
+<tr><td><a href="skills/prove">prove</a></td><td>Verify a change against explicit done-predicates on the real artifact and return <code>VERIFIED</code>, <code>NOT VERIFIED</code>, or <code>INCONCLUSIVE</code> per predicate, with the evidence-ladder step reached</td></tr>
 <tr><td><a href="skills/refine-issue">refine-issue</a></td><td>Fetch an existing GitHub issue by number, rewrite it to a consistent template with gitmoji title and structured sections, and update it in-place via gh</td></tr>
 <tr><td><a href="skills/release">release</a></td><td>Cut a full versioned release in one step: updates <code>CHANGELOG.md</code>, commits it, creates an annotated git tag, and pushes everything to remote</td></tr>
 <tr><td><a href="skills/review">review</a></td><td>Perform deep, evidence-first code review on local diffs, staged changes, branch comparisons, or GitHub PRs and issues</td></tr>
@@ -214,6 +215,18 @@ Holds 21 engineering principles as a rulebook, grouped by the phase of work they
 /principles                      # pick the group for the current task
 /principles debugging            # load one phase group
 /principles fix-root-causes      # load one principle
+```
+
+---
+
+### [prove](skills/prove)
+
+Answers "does it actually work?" before an agent says done. States the done-predicates, picks the check that matches the changed surface (run the command, drive the running app, read the value back), and reports a verdict per predicate with the exact command, output, and evidence-ladder step. Bug fixes reproduce twice on the old build and are confirmed gone twice on the new one. Uses the project's `.skills/verify-<app>/` driver from `create-verifier` when the check needs the running app.
+
+```
+/prove                          # verify the uncommitted change
+/prove "<goal or predicate>"    # verify against an explicit goal
+/prove --fresh                  # an independent agent does the checking
 ```
 
 ---
