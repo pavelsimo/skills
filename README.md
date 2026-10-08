@@ -35,6 +35,7 @@ npx skills@latest add pavelsimo/skills
 <tr><td><a href="skills/review">review</a></td><td>Perform deep, evidence-first code review on local diffs, staged changes, branch comparisons, or GitHub PRs and issues</td></tr>
 <tr><td><a href="skills/search-anime">search-anime</a></td><td>Search anime and manga using the ani CLI</td></tr>
 <tr><td><a href="skills/taste">taste</a></td><td>Analyze repositories to extract shared engineering conventions, style guidelines, and anti-patterns</td></tr>
+<tr><td><a href="skills/until-done">until-done</a></td><td>Run a verified loop toward a predicate or metric target — one change, one <code>prove</code> check, keep or revert, one decision-log row per round — until the goal holds</td></tr>
 <tr><td><a href="skills/ytd">ytd</a></td><td>Download YouTube videos, audio, or transcripts from the command line with quality and language controls</td></tr>
 </tbody>
 </table>
@@ -297,6 +298,18 @@ Clones one or more repositories, samples key files, and synthesizes a `TASTE.md`
 /taste owner/repo1 owner/repo2
 /taste --html --slides --output ~/reports owner/repo1
 /taste ~/Projects/my-tool https://github.com/some/repo
+```
+
+---
+
+### [until-done](skills/until-done)
+
+Runs long, unattended work without drift. Frames the goal as a checkable predicate (or a metric target with a minimum number of attempts), freezes the measurement harness, and records an explained baseline. Each round makes one change, checks it with `prove`, commits it only if it advanced, and appends a row to `decisions.tsv`. It never loosens the goal or edits the harness to pass, and a fresh agent audits the log at the end.
+
+```
+/until-done "every fixture in test/fixtures passes"
+/until-done "p50 of bin/bench under 120ms" --min-attempts 10
+/until-done --resume <slug>
 ```
 
 ---
