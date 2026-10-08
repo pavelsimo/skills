@@ -28,6 +28,7 @@ npx skills@latest add pavelsimo/skills
 <tr><td><a href="skills/humanize">humanize</a></td><td>Remove AI writing patterns and make text sound natural and human</td></tr>
 <tr><td><a href="skills/markdown">markdown</a></td><td>Convert files and URLs to clean Markdown using markitdown via uvx — no installation required</td></tr>
 <tr><td><a href="skills/mermaid">mermaid</a></td><td>Generate Mermaid diagrams from source files, schemas, or plain-text descriptions with automatic or manual diagram type selection</td></tr>
+<tr><td><a href="skills/principles">principles</a></td><td>A rulebook of 21 engineering principles grouped by phase — before writing, changing code, concurrency/ops, debugging, readability, agent conduct — loaded one group at a time</td></tr>
 <tr><td><a href="skills/refine-issue">refine-issue</a></td><td>Fetch an existing GitHub issue by number, rewrite it to a consistent template with gitmoji title and structured sections, and update it in-place via gh</td></tr>
 <tr><td><a href="skills/release">release</a></td><td>Cut a full versioned release in one step: updates <code>CHANGELOG.md</code>, commits it, creates an annotated git tag, and pushes everything to remote</td></tr>
 <tr><td><a href="skills/review">review</a></td><td>Perform deep, evidence-first code review on local diffs, staged changes, branch comparisons, or GitHub PRs and issues</td></tr>
@@ -201,6 +202,18 @@ Analyzes source code, schemas, or plain-text descriptions and generates valid Me
 /mermaid <description>      # target a specific area
 /mermaid --type=<type>      # force a diagram type
 /mermaid --output=<file>    # save diagram to file
+```
+
+---
+
+### [principles](skills/principles)
+
+Holds 21 engineering principles as a rulebook, grouped by the phase of work they apply to. `SKILL.md` only routes; each principle lives in its own reference file with the rule, when it applies, an example, and the usual violation, so the agent loads just the group that fits the task. `review` can cite principles by name in its findings. Adapted from [pstack](https://github.com/cursor/plugins/tree/main/pstack) by [poteto](https://x.com/poteto).
+
+```
+/principles                      # pick the group for the current task
+/principles debugging            # load one phase group
+/principles fix-root-causes      # load one principle
 ```
 
 ---
