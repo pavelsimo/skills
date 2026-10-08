@@ -22,6 +22,7 @@ npx skills@latest add pavelsimo/skills
 <tr><td><a href="skills/create-html">create-html</a></td><td>Transform any document (PDF, DOCX, PPTX, Markdown, text) into a polished HTML file by auto-selecting from 20 purpose-built presentation templates</td></tr>
 <tr><td><a href="skills/create-issue">create-issue</a></td><td>Turn a rough description into a structured GitHub issue with gitmoji title, problem statement, acceptance criteria, and technical notes — with an optional interview mode that reads the codebase first</td></tr>
 <tr><td><a href="skills/create-skill">create-skill</a></td><td>Bootstrap a new agent skill (SKILL.md, README, LICENSE) as a directory in this repo and register it in the index</td></tr>
+<tr><td><a href="skills/create-verifier">create-verifier</a></td><td>Generate a project-local <code>.skills/verify-&lt;app&gt;/</code> driver that launches, health-checks, drives, and cleans up the app, then prove it with one end-to-end run — with an <code>--audit</code> mode for drift</td></tr>
 <tr><td><a href="skills/create-web">create-web</a></td><td>Scaffold production-ready web applications from language templates — Ruby on Rails 8.x (37signals style: magic-link auth, Hotwire, Solid Queue/Cache/Cable, native CSS, Minitest, Kamal) or Python (Reflex + FastAPI, SQLite WAL, uv/ruff/mypy/pytest, Kamal)</td></tr>
 <tr><td><a href="skills/deep-learn">deep-learn</a></td><td>Run an interactive, mastery-gated tutoring session on one topic — a running comprehension checklist, layered explanations, and AskUserQuestion quizzes — until the problem, the solution, and why it matters are all understood</td></tr>
 <tr><td><a href="skills/humanize">humanize</a></td><td>Remove AI writing patterns and make text sound natural and human</td></tr>
@@ -125,6 +126,17 @@ Scaffolds a new agent skill from a plain-text description. Generates SKILL.md, R
 ```
 /create-skill                    # prompt for name and description
 /create-skill <name>             # prompt for description only
+```
+
+---
+
+### [create-verifier](skills/create-verifier)
+
+Gives a project its own app driver. Reads the repo to learn how the app runs and how to drive it, then writes `.skills/verify-<app>/` with Launch, Doctor, Drive, Evidence, and Cleanup sections plus a feature map, using real commands and selectors from the code. The driver is run once end to end before it is handed over. It knows how to operate the app, not what counts as a pass — that lives in `prove`.
+
+```
+/create-verifier                 # generate .skills/verify-<app>/ for this repo
+/create-verifier --audit         # check an existing driver for drift
 ```
 
 ---
