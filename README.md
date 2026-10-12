@@ -17,26 +17,26 @@ npx skills@latest add pavelsimo/skills
 <tbody>
 <tr><td><a href="skills/changelog">changelog</a></td><td>Generate changelog entries from git history following Keep a Changelog conventions and manage versioned releases</td></tr>
 <tr><td><a href="skills/commit">commit</a></td><td>Generate conventional git commits with gitmoji prefix and lowercase message style</td></tr>
-<tr><td><a href="skills/create-cli">create-cli</a></td><td>Scaffold production-ready CLI projects from language templates — Go (Cobra, goreleaser, GitHub Pages) and Python (Typer, uv, ruff+mypy, PyPI OIDC publishing, GitHub Pages)</td></tr>
+<tr><td><a href="skills/create-cli">create-cli</a></td><td>Scaffold production-ready CLI projects from language templates: Go (Cobra, goreleaser, GitHub Pages) and Python (Typer, uv, ruff+mypy, PyPI OIDC publishing, GitHub Pages)</td></tr>
 <tr><td><a href="skills/create-docs">create-docs</a></td><td>Analyze a codebase and generate or refresh LLM-optimized documentation in docs/ or a custom directory</td></tr>
 <tr><td><a href="skills/create-html">create-html</a></td><td>Transform any document (PDF, DOCX, PPTX, Markdown, text) into a polished HTML file by auto-selecting from 20 purpose-built presentation templates</td></tr>
-<tr><td><a href="skills/create-issue">create-issue</a></td><td>Turn a rough description into a structured GitHub issue with gitmoji title, problem statement, acceptance criteria, and technical notes — with an optional interview mode that reads the codebase first</td></tr>
+<tr><td><a href="skills/create-issue">create-issue</a></td><td>Turn a rough description into a structured GitHub issue with gitmoji title, problem statement, acceptance criteria, and technical notes, with an optional interview mode that reads the codebase first</td></tr>
 <tr><td><a href="skills/create-skill">create-skill</a></td><td>Bootstrap a new agent skill (SKILL.md, README, LICENSE) as a directory in this repo and register it in the index</td></tr>
 <tr><td><a href="skills/create-verifier">create-verifier</a></td><td>Generate a project-local <code>.skills/verify-&lt;app&gt;/</code> driver that launches, health-checks, drives, and cleans up the app, then prove it with one end-to-end run</td></tr>
-<tr><td><a href="skills/create-web">create-web</a></td><td>Scaffold production-ready web applications from language templates — Ruby on Rails 8.x (37signals style: magic-link auth, Hotwire, Solid Queue/Cache/Cable, native CSS, Minitest, Kamal) or Python (Reflex + FastAPI, SQLite WAL, uv/ruff/mypy/pytest, Kamal)</td></tr>
-<tr><td><a href="skills/deep-learn">deep-learn</a></td><td>Run an interactive, mastery-gated tutoring session on one topic — a running comprehension checklist, layered explanations, and AskUserQuestion quizzes — until the problem, the solution, and why it matters are all understood</td></tr>
+<tr><td><a href="skills/create-web">create-web</a></td><td>Scaffold production-ready web applications from language templates: Ruby on Rails 8.x (37signals style: magic-link auth, Hotwire, Solid Queue/Cache/Cable, native CSS, Minitest, Kamal) or Python (Reflex + FastAPI, SQLite WAL, uv/ruff/mypy/pytest, Kamal)</td></tr>
+<tr><td><a href="skills/deep-learn">deep-learn</a></td><td>Run an interactive, mastery-gated tutoring session on one topic (a running comprehension checklist, layered explanations, and AskUserQuestion quizzes) until the problem, the solution, and why it matters are all understood</td></tr>
 <tr><td><a href="skills/humanize">humanize</a></td><td>Remove AI writing patterns and make text sound natural and human</td></tr>
 <tr><td><a href="skills/maintain-verifier">maintain-verifier</a></td><td>Keep a <code>.skills/verify-&lt;app&gt;/</code> driver honest: parallel source readers per feature, one live pass driving every feature, a churn sweep for missing features, and at most one commit of proven corrections</td></tr>
-<tr><td><a href="skills/markdown">markdown</a></td><td>Convert files and URLs to clean Markdown using markitdown via uvx — no installation required</td></tr>
+<tr><td><a href="skills/markdown">markdown</a></td><td>Convert files and URLs to clean Markdown using markitdown via uvx, no installation required</td></tr>
 <tr><td><a href="skills/mermaid">mermaid</a></td><td>Generate Mermaid diagrams from source files, schemas, or plain-text descriptions with automatic or manual diagram type selection</td></tr>
-<tr><td><a href="skills/principles">principles</a></td><td>A rulebook of 21 engineering principles grouped by phase — before writing, changing code, concurrency/ops, debugging, readability, agent conduct — loaded one group at a time</td></tr>
+<tr><td><a href="skills/principles">principles</a></td><td>A rulebook of 21 engineering principles grouped by phase (before writing, changing code, concurrency/ops, debugging, readability, agent conduct), loaded one group at a time</td></tr>
 <tr><td><a href="skills/prove">prove</a></td><td>Verify a change against explicit done-predicates on the real artifact and return <code>VERIFIED</code>, <code>NOT VERIFIED</code>, or <code>INCONCLUSIVE</code> per predicate, with the evidence-ladder step reached</td></tr>
 <tr><td><a href="skills/refine-issue">refine-issue</a></td><td>Fetch an existing GitHub issue by number, rewrite it to a consistent template with gitmoji title and structured sections, and update it in-place via gh</td></tr>
 <tr><td><a href="skills/release">release</a></td><td>Cut a full versioned release in one step: updates <code>CHANGELOG.md</code>, commits it, creates an annotated git tag, and pushes everything to remote</td></tr>
 <tr><td><a href="skills/review">review</a></td><td>Perform deep, evidence-first code review on local diffs, staged changes, branch comparisons, or GitHub PRs and issues</td></tr>
 <tr><td><a href="skills/search-anime">search-anime</a></td><td>Search anime and manga using the ani CLI</td></tr>
 <tr><td><a href="skills/taste">taste</a></td><td>Analyze repositories to extract shared engineering conventions, style guidelines, and anti-patterns</td></tr>
-<tr><td><a href="skills/until-done">until-done</a></td><td>Run a verified loop toward a predicate or metric target — one change, one <code>prove</code> check, keep or revert, one decision-log row per round — until the goal holds</td></tr>
+<tr><td><a href="skills/until-done">until-done</a></td><td>Run a verified loop toward a predicate or metric target (one change, one <code>prove</code> check, keep or revert, one decision-log row per round) until the goal holds</td></tr>
 <tr><td><a href="skills/ytd">ytd</a></td><td>Download YouTube videos, audio, or transcripts from the command line with quality and language controls</td></tr>
 </tbody>
 </table>
@@ -76,7 +76,7 @@ Examples:
 
 ### [create-cli](skills/create-cli)
 
-Scaffolds production-ready CLI projects from language templates. Invoke `/create-cli`, pick a template (`go` or `python`), and get a complete project: CI/CD, docs site, releases, and git hooks — pushed to GitHub.
+Scaffolds production-ready CLI projects from language templates. Invoke `/create-cli`, pick a template (`go` or `python`), and get a complete project: CI/CD, docs site, releases, and git hooks, pushed to GitHub.
 
 ```
 /create-cli
@@ -125,7 +125,7 @@ Turns a rough description into a structured GitHub issue with a gitmoji-prefixed
 
 ### [create-skill](skills/create-skill)
 
-Scaffolds a new agent skill from a plain-text description. Generates SKILL.md, README.md, and LICENSE, writes them as a `skills/<name>/` directory in this repo, and adds the skill to the index table and detail sections — all in one shot.
+Scaffolds a new agent skill from a plain-text description. Generates SKILL.md, README.md, and LICENSE, writes them as a `skills/<name>/` directory in this repo, and adds the skill to the index table and detail sections, all in one shot.
 
 ```
 /create-skill                    # prompt for name and description
@@ -136,7 +136,7 @@ Scaffolds a new agent skill from a plain-text description. Generates SKILL.md, R
 
 ### [create-verifier](skills/create-verifier)
 
-Gives a project its own app driver. Reads the repo to learn how the app runs and how to drive it, then writes `.skills/verify-<app>/` with Launch, Doctor, Drive, Evidence, and Cleanup sections plus a feature map, using real commands and selectors from the code. The driver is run once end to end before it is handed over. It knows how to operate the app, not what counts as a pass — that lives in `prove`.
+Gives a project its own app driver. Reads the repo to learn how the app runs and how to drive it, then writes `.skills/verify-<app>/` with Launch, Doctor, Drive, Evidence, and Cleanup sections plus a feature map, using real commands and selectors from the code. The driver is run once end to end before it is handed over. It knows how to operate the app, not what counts as a pass; that lives in `prove`.
 
 ```
 /create-verifier                 # generate .skills/verify-<app>/ for this repo
@@ -147,7 +147,7 @@ Gives a project its own app driver. Reads the repo to learn how the app runs and
 
 ### [create-web](skills/create-web)
 
-Scaffolds a production-ready web application. The Ruby template is Rails 8.x, built the way 37signals builds Basecamp and Hey: passwordless magic-link auth, Hotwire frontend, Solid Queue/Cache/Cable (no Redis), native CSS with cascade layers, Minitest with fixtures, and Kamal container deployment. The Python template applies the same philosophy: Reflex UI with a mounted FastAPI app, SQLite tuned with WAL mode, magic-link auth, uv/ruff/mypy/pytest tooling, and the same Kamal deployment — all pre-wired and ready to ship.
+Scaffolds a production-ready web application. The Ruby template is Rails 8.x, built the way 37signals builds Basecamp and Hey: passwordless magic-link auth, Hotwire frontend, Solid Queue/Cache/Cable (no Redis), native CSS with cascade layers, Minitest with fixtures, and Kamal container deployment. The Python template applies the same philosophy: Reflex UI with a mounted FastAPI app, SQLite tuned with WAL mode, magic-link auth, uv/ruff/mypy/pytest tooling, and the same Kamal deployment, all pre-wired and ready to ship.
 
 ```
 /create-web
@@ -171,7 +171,7 @@ Runs an interactive, mastery-gated tutoring session on a single topic. Claude ac
 
 ### [humanize](skills/humanize)
 
-Identifies and removes 29 AI writing patterns — significance inflation, promotional language, AI vocabulary, em dash clusters, chatbot sign-offs, filler phrases, and more. Includes optional voice calibration from a writing sample and a two-pass rewriting process (draft + anti-AI audit).
+Identifies and removes 29 AI writing patterns: significance inflation, promotional language, AI vocabulary, em dash clusters, chatbot sign-offs, filler phrases, and more. Includes optional voice calibration from a writing sample and a two-pass rewriting process (draft + anti-AI audit).
 
 ```
 /humanize                          # humanize text in the current context
@@ -196,7 +196,7 @@ Keeps a `create-verifier` driver in step with the app. One read-only reader per 
 
 ### [markdown](skills/markdown)
 
-Converts files and URLs to clean Markdown using [markitdown](https://github.com/microsoft/markitdown) via `uvx` — no installation required.
+Converts files and URLs to clean Markdown using [markitdown](https://github.com/microsoft/markitdown) via `uvx`, no installation required.
 
 ```
 /markdown input.pdf                       # convert to stdout
