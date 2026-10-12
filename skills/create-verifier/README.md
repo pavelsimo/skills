@@ -7,7 +7,6 @@ A skill that generates a project-local `.skills/verify-<app>/` driver that knows
 ```
 /create-verifier                 # generate .skills/verify-<app>/ for this repo
 /create-verifier <app>           # use an explicit app name
-/create-verifier --audit         # check an existing driver for drift
 ```
 
 The agent reads the repo to learn how the app runs, asks only what the code can't answer, writes the driver with real commands and selectors, and runs it once end to end before handing it over.
@@ -34,11 +33,12 @@ Each feature file has four sections: `Sub-features`, `How to get to it (user POV
 
 The driver holds no pass/fail rules. Those live in `prove`. What to check comes from each task's done-predicates.
 
-**Audit mode** reads the source behind each feature, makes one live pass driving every feature, and reports `clean`, `changed` (corrections confined to `.skills/verify-<app>/`), or `blocked`. It never edits product code.
+To keep the driver current as the app changes, run `/maintain-verifier`.
 
 ## Related skills
 
 - `prove` — the judge; it opens the driver when a check needs the running app
+- `maintain-verifier` — keeps the driver and feature map in step with the app
 - `until-done` — runs `prove`, and through it the driver, once per round
 
 Based on the verification design in [pstack](https://github.com/cursor/plugins/tree/main/pstack) by [poteto](https://x.com/poteto).

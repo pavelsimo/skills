@@ -1,6 +1,6 @@
 ---
 name: create-verifier
-description: Generates a project-local verification skill at .skills/verify-<app>/ that knows how to launch, health-check, drive, capture evidence from, and clean up the project's app, plus a feature map, then proves it works with one end-to-end run. Use when a project has no scripted way to launch and drive its app, when the user says "make this project verifiable", or with --audit after the app has changed.
+description: Generates a project-local verification skill at .skills/verify-<app>/ that knows how to launch, health-check, drive, capture evidence from, and clean up the project's app, plus a feature map, then proves it works with one end-to-end run. Use when a project has no scripted way to launch and drive its app, or when the user says "make this project verifiable". To keep an existing driver current, use maintain-verifier.
 ---
 
 # create-verifier skill
@@ -15,7 +15,7 @@ A driver that was never run is a draft, not a deliverable, so every generated dr
 - generates `.skills/verify-<app>/SKILL.md` with Launch, Doctor, Drive, Evidence, and Cleanup sections using real commands, routes, and selectors from this repo
 - seeds a feature map with the top 3–5 user-facing features, one file each
 - proves the driver once: launch, doctor, drive one feature, capture evidence, clean up, and confirm the evidence survives cleanup
-- `--audit` checks an existing driver against the source and one live pass; outcome is `clean`, `changed`, or `blocked`
+- hands upkeep to `/maintain-verifier` once the driver exists
 - never edits product code; a broken app is reported, not papered over in docs
 
 ## usage
@@ -23,7 +23,6 @@ A driver that was never run is a draft, not a deliverable, so every generated dr
 ```
 /create-verifier                 # generate .skills/verify-<app>/ for this repo
 /create-verifier <app>           # use an explicit app name
-/create-verifier --audit         # check an existing driver for drift
 ```
 
 ## what gets created
@@ -42,8 +41,7 @@ A driver that was never run is a draft, not a deliverable, so every generated dr
    ```bash
    ls -d .skills/verify-*/ 2>/dev/null
    ```
-   - if one exists and `--audit` was not given: ask `a driver already exists — audit it instead? yes / regenerate / cancel`
-   - if `--audit` was given: follow [reference/audit.md](reference/audit.md) and stop here
+   - if one exists: ask `a driver already exists — run /maintain-verifier instead? yes / regenerate / cancel`; on `yes`, stop here and hand over to `maintain-verifier`
 
 2. **Name the app.** Use `<app>` if given; otherwise the repo directory name in kebab-case (`[a-z0-9-]`).
 
@@ -87,6 +85,7 @@ A driver that was never run is a draft, not a deliverable, so every generated dr
    proven:    launch → doctor → drive <feature> → evidence → cleanup   (passed)
    evidence:  <paths from the proving run>
    asked:     <questions the code could not answer, with the answers>
+   upkeep:    run /maintain-verifier after the app changes
    ```
 
 ## best practices
