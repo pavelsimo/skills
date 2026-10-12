@@ -26,6 +26,7 @@ npx skills@latest add pavelsimo/skills
 <tr><td><a href="skills/create-web">create-web</a></td><td>Scaffold production-ready web applications from language templates — Ruby on Rails 8.x (37signals style: magic-link auth, Hotwire, Solid Queue/Cache/Cable, native CSS, Minitest, Kamal) or Python (Reflex + FastAPI, SQLite WAL, uv/ruff/mypy/pytest, Kamal)</td></tr>
 <tr><td><a href="skills/deep-learn">deep-learn</a></td><td>Run an interactive, mastery-gated tutoring session on one topic — a running comprehension checklist, layered explanations, and AskUserQuestion quizzes — until the problem, the solution, and why it matters are all understood</td></tr>
 <tr><td><a href="skills/humanize">humanize</a></td><td>Remove AI writing patterns and make text sound natural and human</td></tr>
+<tr><td><a href="skills/maintain-verifier">maintain-verifier</a></td><td>Keep a <code>.skills/verify-&lt;app&gt;/</code> driver honest: parallel source readers per feature, one live pass driving every feature, a churn sweep for missing features, and at most one commit of proven corrections</td></tr>
 <tr><td><a href="skills/markdown">markdown</a></td><td>Convert files and URLs to clean Markdown using markitdown via uvx — no installation required</td></tr>
 <tr><td><a href="skills/mermaid">mermaid</a></td><td>Generate Mermaid diagrams from source files, schemas, or plain-text descriptions with automatic or manual diagram type selection</td></tr>
 <tr><td><a href="skills/principles">principles</a></td><td>A rulebook of 21 engineering principles grouped by phase — before writing, changing code, concurrency/ops, debugging, readability, agent conduct — loaded one group at a time</td></tr>
@@ -178,6 +179,18 @@ Identifies and removes 29 AI writing patterns — significance inflation, promot
 ```
 
 Based on [blader/humanizer](https://github.com/blader/humanizer) by [@blader](https://github.com/blader).
+
+---
+
+### [maintain-verifier](skills/maintain-verifier)
+
+Keeps a `create-verifier` driver in step with the app. One read-only reader per feature file checks the map against the source in parallel, a sweep of recent commits finds user-facing features the map lacks, and one live pass drives every feature, even when the source looks clean. Doc drift and harness gaps are fixed inside `.skills/verify-<app>/` and re-driven live. Product bugs are reported, never written into the map. The outcome is `clean`, `changed` (one commit on its own branch), or `blocked`.
+
+```
+/maintain-verifier                  # maintain the only driver under .skills/verify-*/
+/maintain-verifier <app>            # pick one when there are several
+/maintain-verifier --since <ref>    # sweep churn since <ref>
+```
 
 ---
 
